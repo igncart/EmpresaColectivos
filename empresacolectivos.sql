@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2024 a las 01:34:58
+-- Tiempo de generación: 11-06-2024 a las 04:43:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `empresacolectivos`
 --
+CREATE DATABASE IF NOT EXISTS `empresacolectivos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `empresacolectivos`;
 
 -- --------------------------------------------------------
 
@@ -35,6 +37,15 @@ CREATE TABLE `colectivo` (
   `capacidad` int(11) NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `colectivo`
+--
+
+INSERT INTO `colectivo` (`id_colectivo`, `matricula`, `marca`, `modelo`, `capacidad`, `estado`) VALUES
+(1, 'AB123CS', 'niccolo', 'Isidro 2022', 60, 1),
+(2, 'AB214DC', 'niccolo', 'avanti', 30, 1),
+(3, 'AC213CD', 'niccolo', 'cento', 44, 0);
 
 -- --------------------------------------------------------
 
@@ -83,6 +94,14 @@ CREATE TABLE `pasajero` (
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `pasajero`
+--
+
+INSERT INTO `pasajero` (`id_pasajero`, `nombre`, `apellido`, `dni`, `correo`, `telefono`, `estado`) VALUES
+(1, 'Juanjo', 'Saez', '35353535', 'juanjo@gmail.com', '2664353535', 1),
+(2, 'Juanjitooo', 'Saezitooo', '25252525', 'juanjito@hotmail.com', '02652010203', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -96,6 +115,14 @@ CREATE TABLE `ruta` (
   `duracion_estimada` time NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ruta`
+--
+
+INSERT INTO `ruta` (`id_ruta`, `origen`, `destino`, `duracion_estimada`, `estado`) VALUES
+(1, 'San Luis', 'Mendoza', '04:00:00', 1),
+(2, 'San Luis', 'V. Mercedes', '01:20:00', 0);
 
 --
 -- Índices para tablas volcadas
@@ -144,7 +171,7 @@ ALTER TABLE `ruta`
 -- AUTO_INCREMENT de la tabla `colectivo`
 --
 ALTER TABLE `colectivo`
-  MODIFY `id_colectivo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_colectivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
@@ -162,13 +189,13 @@ ALTER TABLE `pasaje`
 -- AUTO_INCREMENT de la tabla `pasajero`
 --
 ALTER TABLE `pasajero`
-  MODIFY `id_pasajero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pasajero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `id_ruta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
