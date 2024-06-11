@@ -3,6 +3,7 @@ package empresacolectivos;
 import empresacolectivos.Entidades.*;
 import empresacolectivos.accesoADatos.*;
 import java.sql.Connection;
+import java.time.LocalTime;
 
 
 public class EmpresaColectivos {
@@ -10,7 +11,70 @@ public class EmpresaColectivos {
     
     public static void main(String[] args) {
 
+
+//                                                                            (((RutaData)))    
+//RutaData rut = new RutaData();
+
+/*                                                                     - - - - registrar rutas - - - -
+
+Ruta ruta1 = new Ruta("San Luis", "Mendoza", LocalTime.of(04, 00, 00), true);
+Ruta ruta2 = new Ruta("San Luis", "Villa Mercedes", LocalTime.of(01, 30, 00), true);
+
+rut.registrarRuta(ruta1);
+rut.registrarRuta(ruta2);
+        
+                                                                       - - - - modificar ruta - - - -        
+
+Ruta ruta2 = new Ruta(2,"San Luis", "V. Mercedes", LocalTime.of(01, 20, 00), true);
+
+rut.modificarRuta(ruta2);
+        
+
+                                                                       - - - - eliminar ruta - - - -     
+
+rut.eliminarRuta(2);
+        
+                                                                        - - - - listar rutas - - - -     
+
+for (Ruta ruta : rut.listarRutas()) {
+    
+    System.out.println("Origen: "+ruta.getOrigen());
+    System.out.println("Destino: "+ruta.getDestino());
+    System.out.println("Duración: "+ruta.getDuracion_Estimada()+" hs.");
+    System.out.println("");
+    
+}
+        
+                                                                         - - - - buscar ruta por destino - - - -   
+
+   Ruta rutaEncontrada = rut.buscarRutaPorDestino("Mendoza"); 
        
+           if (rutaEncontrada != null) {      
+                   System.out.println("ID: "+rutaEncontrada.getId_Ruta());
+                   System.out.println("Origen: "+rutaEncontrada.getOrigen());
+                   System.out.println("Destino: "+rutaEncontrada.getDestino());
+                   System.out.println("Duración: "+rutaEncontrada.getDuracion_Estimada());
+                   System.out.println("");
+           }
+        
+                                                                          - - - - buscar ruta por origen - - - -       
+
+   Ruta rutaEncontrada = rut.buscarRutaPorOrigen("San Luis"); 
+       
+           if (rutaEncontrada != null) {      
+                   System.out.println("ID: "+rutaEncontrada.getId_Ruta());
+                   System.out.println("Origen: "+rutaEncontrada.getOrigen());
+                   System.out.println("Destino: "+rutaEncontrada.getDestino());
+                   System.out.println("Duración: "+rutaEncontrada.getDuracion_Estimada());
+                   System.out.println("");
+           }
+*/        
+
+
+
+
+
+
 
 //                                                                            (((PasajeroData)))
 
