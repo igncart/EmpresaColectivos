@@ -12,6 +12,69 @@ public class EmpresaColectivos {
     public static void main(String[] args) {
 
 
+//                                                                            (((HorarioData)))    
+/*
+                                                                     - - - - registrar horarios - - - -
+HorarioData hora = new HorarioData();
+RutaData rut = new RutaData();
+Ruta ruta = rut.buscarRuta(1);
+
+
+ 
+Horario horario1 = new Horario(ruta, LocalTime.of(06, 0), LocalTime.of(10, 0), true);
+Horario horario2 = new Horario(ruta, LocalTime.of(16, 0), LocalTime.of(20, 0), true);
+
+hora.registrarHorario(horario1);
+hora.registrarHorario(horario2);
+
+//                                                                       - - - - modificar horario - - - -
+Horario horario1 = new Horario(1, ruta, LocalTime.of(05, 45), LocalTime.of(10, 0), true);
+hora.modificarHorario(horario1);
+
+//                                                                       - - - - eliminar horario - - - -
+hora.eliminarHorario(2);
+
+
+//                                                                       - - - - listar horarios - - - -
+
+for (Horario horario3 : hora.listarHorarios()) {
+    
+    System.out.println("ID-horario: "+horario3.getId_Horario());
+    System.out.println("ID-ruta: "+horario3.getRuta().getId_Ruta());
+    System.out.println("Hora de salida: "+horario3.getHora_Salida()+" hs.");
+    System.out.println("Hora de llegada: "+horario3.getHora_Llegada()+" hs.");
+    System.out.println("");
+}
+
+//                                                                       - - - - buscar horario por ruta - - - -
+
+   Horario horarioEncontrado = hora.buscarHorarioPorRuta(ruta); 
+       
+           if (horarioEncontrado != null) {      
+                   System.out.println("ID-horario: "+horarioEncontrado.getId_Horario());
+                   System.out.println("ID-ruta: "+horarioEncontrado.getRuta().getId_Ruta());
+                   System.out.println("Hora de salida: "+horarioEncontrado.getHora_Salida());
+                   System.out.println("Hora de llegada: "+horarioEncontrado.getHora_Llegada());
+                   System.out.println("");
+           }
+
+//                                                                       - - - - buscar horario por salida - - - -
+  
+   Horario horarioEncontrado = hora.buscarHorarioPorSalida(LocalTime.of(05, 45)); 
+       
+           if (horarioEncontrado != null) {      
+                   System.out.println("ID-horario: "+horarioEncontrado.getId_Horario());
+                   System.out.println("ID-ruta: "+horarioEncontrado.getRuta().getId_Ruta());
+                   System.out.println("Hora de salida: "+horarioEncontrado.getHora_Salida());
+                   System.out.println("Hora de llegada: "+horarioEncontrado.getHora_Llegada());
+                   System.out.println("");
+           }
+*/
+
+
+
+
+
 //                                                                            (((RutaData)))    
 //RutaData rut = new RutaData();
 

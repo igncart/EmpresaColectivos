@@ -128,6 +128,8 @@ public List<Ruta> listarRutas() {
             rutas.add(ruta);
   
         }
+        ps.close();
+        rs.close();
          
     } catch (SQLException ex) {
         
@@ -168,7 +170,8 @@ public Ruta buscarRutaPorOrigen(String origen) {
            JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
        }
        
-       ps.close();
+        ps.close();
+        rs.close();
 
    } catch (SQLException ex) {
        
@@ -209,7 +212,8 @@ public Ruta buscarRutaPorDestino(String destino) {
            JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
        }
        
-       ps.close();
+        ps.close();
+        rs.close();
 
    } catch (SQLException ex) {
        
@@ -218,4 +222,46 @@ public Ruta buscarRutaPorDestino(String destino) {
 
     return ruta;
 }
+
+public Ruta buscarRuta(int id) {
+    
+    String sql = "SELECT id_ruta, origen, destino, duracion_estimada "
+                     + "FROM ruta "
+                     + "WHERE id_ruta = ? AND estado = 1";
+    
+    Ruta ruta = null;
+    
+   try {
+       
+       PreparedStatement ps = con.prepareStatement(sql);
+       
+       ps.setInt(1, id);
+       ResultSet rs = ps.executeQuery();
+       
+       if (rs.next()) {
+           
+           ruta = new Ruta();
+           
+           ruta.setId_Ruta(id);
+           ruta.setOrigen(rs.getString("origen"));
+           ruta.setDestino(rs.getString("destino"));
+           ruta.setDuracion_Estimada(rs.getTime("duracion_estimada").toLocalTime());
+           ruta.setEstado(true);
+           
+       } else {
+           
+           JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
+       }
+       
+        ps.close();
+        rs.close();
+
+   } catch (SQLException ex) {
+       
+       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ruta.");
+   }
+
+    return ruta;
+}
+
 }
