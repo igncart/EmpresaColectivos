@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2024 a las 04:43:57
+-- Tiempo de generación: 12-06-2024 a las 03:04:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -60,6 +60,14 @@ CREATE TABLE `horario` (
   `hora_llegada` time NOT NULL,
   `estado` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horario`
+--
+
+INSERT INTO `horario` (`id_horario`, `id_ruta`, `hora_salida`, `hora_llegada`, `estado`) VALUES
+(1, 1, '05:45:00', '10:00:00', 1),
+(2, 1, '16:00:00', '20:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -177,7 +185,7 @@ ALTER TABLE `colectivo`
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pasaje`
