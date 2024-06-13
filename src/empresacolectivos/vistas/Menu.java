@@ -1,20 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package empresacolectivos.vistas;
 
 
-/**
- *
- * @author IGNACIO
- */
+
+
 public class Menu extends javax.swing.JFrame {
 
 
     public Menu() {
         initComponents();
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setTitle("Menu");
     }
@@ -121,13 +116,19 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuPasajerosViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPasajerosViewActionPerformed
-         PasajerosView pasajerosFrame = new PasajerosView();
-    pasajerosFrame.setVisible(true);
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        GestionPasajeros gestionPasajeros = new GestionPasajeros();
+        gestionPasajeros.setVisible(true);
+        jDesktopPane1.add(gestionPasajeros);
     }//GEN-LAST:event_jMenuPasajerosViewActionPerformed
 
     private void jMenuHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHorariosActionPerformed
-         HorariosView horariosFrame = new HorariosView();
-    horariosFrame.setVisible(true);
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        GestionHorarios gestionHorarios = new GestionHorarios();
+        gestionHorarios.setVisible(true);
+        jDesktopPane1.add(gestionHorarios);
         
     }//GEN-LAST:event_jMenuHorariosActionPerformed
 
@@ -136,8 +137,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenuRutasViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRutasViewActionPerformed
-      RutasView rutasFrame = new RutasView();
-        rutasFrame.setVisible(true);
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        GestionRutas gestionRutas = new GestionRutas();
+        gestionRutas.setVisible(true);
+        jDesktopPane1.add(gestionRutas);
     }//GEN-LAST:event_jMenuRutasViewActionPerformed
 
 
