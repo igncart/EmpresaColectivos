@@ -1,3 +1,4 @@
+
 package empresacolectivos.vistas;
 
 import empresacolectivos.Entidades.Pasajero;
@@ -7,17 +8,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author ovied
- */
-
-public class PasajerosView extends javax.swing.JFrame {
+public class Pasajeros_View extends javax.swing.JInternalFrame {
 
       private DefaultTableModel modeloTabla;
       private PasajeroData pasajeroData;
     
-    public PasajerosView() {
+    public Pasajeros_View() {
         initComponents();
         pasajeroData = new PasajeroData();
         inicializarTabla();
@@ -56,8 +52,6 @@ public class PasajerosView extends javax.swing.JFrame {
         jBBuscarPorApellido = new javax.swing.JButton();
         jBBuscarPorDniAction = new javax.swing.JButton();
         jBVisualizarTodosPasajeros = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLGestion.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLGestion.setText("Gestion de pasajeros");
@@ -147,29 +141,26 @@ public class PasajerosView extends javax.swing.JFrame {
             .addGroup(jPApellidoLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLRegistro)
                     .addGroup(jPApellidoLayout.createSequentialGroup()
-                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLRegistro)
+                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLBuscarApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                .addComponent(jTBuscarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPApellidoLayout.createSequentialGroup()
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLBuscarApellido)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                        .addComponent(jTBuscarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLBuscarNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLBuscarDNI)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(43, 43, 43)
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jBBuscarPorNombre)
-                                    .addComponent(jBBuscarPorApellido)
-                                    .addComponent(jBBuscarPorDniAction))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLBuscarNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLBuscarDNI)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(43, 43, 43)
+                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBBuscarPorNombre)
+                            .addComponent(jBBuscarPorApellido)
+                            .addComponent(jBBuscarPorDniAction)))
                     .addGroup(jPApellidoLayout.createSequentialGroup()
                         .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPApellidoLayout.createSequentialGroup()
@@ -203,8 +194,8 @@ public class PasajerosView extends javax.swing.JFrame {
                             .addGroup(jPApellidoLayout.createSequentialGroup()
                                 .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
-                                .addComponent(jBGuardarPasajero)))
-                        .addContainerGap(126, Short.MAX_VALUE))))
+                                .addComponent(jBGuardarPasajero)))))
+                .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jBVisualizarTodosPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -260,13 +251,17 @@ public class PasajerosView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -274,7 +269,7 @@ public class PasajerosView extends javax.swing.JFrame {
 
     private void jBGuardarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarPasajeroActionPerformed
         guardarPasajero();
-              
+
     }//GEN-LAST:event_jBGuardarPasajeroActionPerformed
 
     private void jBBuscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorNombreActionPerformed
@@ -294,18 +289,18 @@ public class PasajerosView extends javax.swing.JFrame {
         if (pasajero != null) {
             modeloTabla.setRowCount(0);
             modeloTabla.addRow(new Object[]{
-                    pasajero.getId_Pasajero(),
-                    pasajero.getNombre(),
-                    pasajero.getApellido(),
-                    pasajero.getDni(),
-                    pasajero.getCorreo(),
-                    pasajero.getTelefono(),
-                    pasajero.isEstado() ? "Activo" : "Inactivo"
+                pasajero.getId_Pasajero(),
+                pasajero.getNombre(),
+                pasajero.getApellido(),
+                pasajero.getDni(),
+                pasajero.getCorreo(),
+                pasajero.getTelefono(),
+                pasajero.isEstado() ? "Activo" : "Inactivo"
             });
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el nombre ingresado.");
-        } 
-            limpiarCamposBusqueda();
+        }
+        limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorNombreActionPerformed
 
     private void jBBuscarPorApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorApellidoActionPerformed
@@ -325,18 +320,18 @@ public class PasajerosView extends javax.swing.JFrame {
         if (pasajero != null) {
             modeloTabla.setRowCount(0);
             modeloTabla.addRow(new Object[]{
-                    pasajero.getId_Pasajero(),
-                    pasajero.getNombre(),
-                    pasajero.getApellido(),
-                    pasajero.getDni(),
-                    pasajero.getCorreo(),
-                    pasajero.getTelefono(),
-                    pasajero.isEstado() ? "Activo" : "Inactivo"
+                pasajero.getId_Pasajero(),
+                pasajero.getNombre(),
+                pasajero.getApellido(),
+                pasajero.getDni(),
+                pasajero.getCorreo(),
+                pasajero.getTelefono(),
+                pasajero.isEstado() ? "Activo" : "Inactivo"
             });
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el apellido ingresado.");
         }
-            limpiarCamposBusqueda();
+        limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorApellidoActionPerformed
 
     private void jBBuscarPorDniActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorDniActionActionPerformed
@@ -356,18 +351,18 @@ public class PasajerosView extends javax.swing.JFrame {
         if (pasajero != null) {
             modeloTabla.setRowCount(0);
             modeloTabla.addRow(new Object[]{
-                    pasajero.getId_Pasajero(),
-                    pasajero.getNombre(),
-                    pasajero.getApellido(),
-                    pasajero.getDni(),
-                    pasajero.getCorreo(),
-                    pasajero.getTelefono(),
-                    pasajero.isEstado() ? "Activo" : "Inactivo"
+                pasajero.getId_Pasajero(),
+                pasajero.getNombre(),
+                pasajero.getApellido(),
+                pasajero.getDni(),
+                pasajero.getCorreo(),
+                pasajero.getTelefono(),
+                pasajero.isEstado() ? "Activo" : "Inactivo"
             });
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el DNI ingresado.");
         }
-            limpiarCamposBusqueda();
+        limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorDniActionActionPerformed
 
     private void jBVisualizarTodosPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVisualizarTodosPasajerosActionPerformed
@@ -375,7 +370,7 @@ public class PasajerosView extends javax.swing.JFrame {
         cargarPasajeros();
     }//GEN-LAST:event_jBVisualizarTodosPasajerosActionPerformed
 
-    private void guardarPasajero() {
+        private void guardarPasajero() {
         String nombre = jTNombre.getText();
         String apellido = jTApellido.getText();
         String dni = jTDNI.getText();
@@ -468,13 +463,8 @@ public class PasajerosView extends javax.swing.JFrame {
         }
     }
      
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PasajerosView().setVisible(true);
-            }
-        });
-    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscarPorApellido;

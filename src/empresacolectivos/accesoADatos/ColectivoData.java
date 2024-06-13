@@ -161,4 +161,50 @@ public class ColectivoData {
     return colectivo;
 }
     
+    public Colectivo buscarPorMatricula(String matricula){
+        
+    String sql = "SELECT id_colectivo, matricula, marca, modelo, capacidad "
+                     + "FROM colectivo "
+                     + "WHERE matricula = ? AND estado = 1";
+    
+    Colectivo colectivo = null;
+    
+   try {
+       
+       PreparedStatement ps = con.prepareStatement(sql);
+       
+       ps.setString(1, matricula);
+       ResultSet rs = ps.executeQuery();
+       
+       if (rs.next()) {
+           
+           colectivo = new Colectivo();
+           
+           colectivo.setId_Colectivo(rs.getInt("id_colectivo"));
+           colectivo.setMatricula(rs.getString("matricula"));
+           colectivo.setMarca(rs.getString("marca"));
+           colectivo.setModelo(rs.getString("modelo"));
+           colectivo.setCapacidad(rs.getInt("capacidad"));
+           colectivo.setEstado(true);
+           
+       } else {
+           
+           JOptionPane.showMessageDialog(null, "El colectivo que busca no existe.");
+       }
+       
+        ps.close();
+        rs.close();
+
+   } catch (SQLException ex) {
+       
+       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla colectivo.");
+   }
+
+    return colectivo;
+    }
+    
 }
+    
+    
+    
+

@@ -14,7 +14,7 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
-        this.setResizable(false);
+        this.setResizable(true);
         this.setLocationRelativeTo(null);
         this.setTitle("Menu");
     }
@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuPasajerosView = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuRutasView = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -68,6 +69,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuPasajerosView);
+
+        jMenuItem2.setText("Gestión Colectivos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
 
@@ -121,13 +130,22 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuPasajerosViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPasajerosViewActionPerformed
-         PasajerosView pasajerosFrame = new PasajerosView();
-    pasajerosFrame.setVisible(true);
+         jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Pasajeros_View pasajerosView = new Pasajeros_View();
+        pasajerosView.setVisible(true);
+
+        jDesktopPane1.add(pasajerosView);
+        
     }//GEN-LAST:event_jMenuPasajerosViewActionPerformed
 
     private void jMenuHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHorariosActionPerformed
-         HorariosView horariosFrame = new HorariosView();
-    horariosFrame.setVisible(true);
+         jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Horarios_View horariosView = new Horarios_View();
+        horariosView.setVisible(true);
+
+        jDesktopPane1.add(horariosView);
         
     }//GEN-LAST:event_jMenuHorariosActionPerformed
 
@@ -136,9 +154,22 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenuRutasViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRutasViewActionPerformed
-      RutasView rutasFrame = new RutasView();
-        rutasFrame.setVisible(true);
+         jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        Rutas_View rutasView = new Rutas_View();
+        rutasView.setVisible(true);
+
+        jDesktopPane1.add(rutasView);
     }//GEN-LAST:event_jMenuRutasViewActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+         jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        ColectivoView coleView = new ColectivoView();
+        coleView.setVisible(true);
+
+        jDesktopPane1.add(coleView);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
 
     public static void main(String args[]) {
@@ -158,6 +189,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuHorarios;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuPasajerosView;
     private javax.swing.JMenuItem jMenuRutasView;
     // End of variables declaration//GEN-END:variables

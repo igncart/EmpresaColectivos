@@ -1,3 +1,4 @@
+
 package empresacolectivos.vistas;
 
 import empresacolectivos.accesoADatos.RutaData;
@@ -8,24 +9,19 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author ovied
- */
 
-public class RutasView extends javax.swing.JFrame {
-   
+public class Rutas_View extends javax.swing.JInternalFrame {
+
     private final RutaData rutaData;
     private final String[] ciudadesCapitales = {"Buenos Aires", "Córdoba", "Rosario", "Mendoza", "Tucumán", "La Plata", "Mar del Plata", "Salta", "Santa Fe", "San Juan", "San Luis", "Resistencia", "Neuquén", "Formosa", "San Salvador de Jujuy", "Bahía Blanca", "Posadas", "Paraná", "Santiago del Estero", "Corrientes", "Concordia"};
     
-    public RutasView() {
+    public Rutas_View() {
         initComponents();
         rutaData = new RutaData();
         mostrarRutasDisponibles();
         cargarCiudadesCapitales();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,7 +32,6 @@ public class RutasView extends javax.swing.JFrame {
         jCOrigen = new javax.swing.JComboBox();
         jCDestino = new javax.swing.JComboBox<>();
         jCBusquedaOrigen = new javax.swing.JComboBox();
-        jLTituloIngreso = new javax.swing.JLabel();
         jLDestino = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -46,17 +41,13 @@ public class RutasView extends javax.swing.JFrame {
         jBBuscarRutasOrigen = new javax.swing.JButton();
         jBBuscarPorDestino = new javax.swing.JButton();
         jLBuscarDestino = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLTituloIngreso = new javax.swing.JLabel();
 
         jLOrigen.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLOrigen.setText("Origen");
 
         jLBuscarOrigen.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLBuscarOrigen.setText("Busqueda por origen");
-
-        jLTituloIngreso.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLTituloIngreso.setText("Ingresos de nuevas rutas");
 
         jLDestino.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLDestino.setText("Destino");
@@ -107,64 +98,70 @@ public class RutasView extends javax.swing.JFrame {
         jLBuscarDestino.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLBuscarDestino.setText("Buscar Por Destino");
 
+        jLTituloIngreso.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        jLTituloIngreso.setText("Ingresos de nuevas rutas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(jLBuscarOrigen)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCBusquedaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBBuscarRutasOrigen)
+                                .addGap(109, 109, 109)
+                                .addComponent(jLBuscarDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(69, 69, 69)
+                                        .addGap(105, 105, 105)
                                         .addComponent(jLOrigen)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(18, 18, 18)
                                         .addComponent(jCOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(102, 102, 102)
                                         .addComponent(jLDestino))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCBusquedaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBBuscarRutasOrigen)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                                        .addComponent(jLBuscarDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCBusquedaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(234, 234, 234)
-                                .addComponent(jLTituloIngreso)))
+                                        .addGap(322, 322, 322)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1))))
+                                .addGap(46, 46, 46)
+                                .addComponent(jBAñadirRuta)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCBusquedaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBBuscarPorDestino)
-                            .addComponent(jBAñadirRuta)))
+                        .addComponent(jBBuscarPorDestino))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(jLabel1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(368, Short.MAX_VALUE))
+                        .addGap(285, 285, 285)
+                        .addComponent(jLTituloIngreso)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLTituloIngreso)
-                .addGap(28, 28, 28)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLOrigen)
                     .addComponent(jCOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLDestino)
                     .addComponent(jBAñadirRuta))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLBuscarOrigen)
                     .addComponent(jCBusquedaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,42 +178,41 @@ public class RutasView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jBAñadirRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAñadirRutaActionPerformed
-            String origen = jCOrigen.getSelectedItem().toString();
-    String destino = jCDestino.getSelectedItem().toString();
+        String origen = jCOrigen.getSelectedItem().toString();
+        String destino = jCDestino.getSelectedItem().toString();
 
-    if (origen.equals(destino)) {
-        JOptionPane.showMessageDialog(null, "El origen y el destino no pueden ser iguales.");
-        return;
-    }
+        if (origen.equals(destino)) {
+            JOptionPane.showMessageDialog(null, "El origen y el destino no pueden ser iguales.");
+            return;
+        }
 
-    // Aca genero un numero entre 4 y 12 a forma de ejemplo para el ejercicio tampoco seleccionen san luis y mendoza porque les puede salir 12hs no sean asi >:C
-   
-    int duracionEstimadaHoras = (int) (Math.random() * (12 - 4 + 1)) + 4;
-    LocalTime duracionEstimada = LocalTime.of(duracionEstimadaHoras, 0);
-    Ruta nuevaRuta = new Ruta(origen, destino, duracionEstimada, true);      // Aca defini el estado de la ruta siempre en true
-    rutaData.registrarRuta(nuevaRuta);
-    mostrarRutasDisponibles();
-    
+        // Aca genero un numero entre 4 y 12 a forma de ejemplo para el ejercicio tampoco seleccionen san luis y mendoza porque les puede salir 12hs no sean asi >:C
+
+        int duracionEstimadaHoras = (int) (Math.random() * (12 - 4 + 1)) + 4;
+        LocalTime duracionEstimada = LocalTime.of(duracionEstimadaHoras, 0);
+        Ruta nuevaRuta = new Ruta(origen, destino, duracionEstimada, true);      // Aca defini el estado de la ruta siempre en true
+        rutaData.registrarRuta(nuevaRuta);
+        mostrarRutasDisponibles();
+
     }//GEN-LAST:event_jBAñadirRutaActionPerformed
 
     private void jBBuscarRutasOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarRutasOrigenActionPerformed
-    
+
     }//GEN-LAST:event_jBBuscarRutasOrigenActionPerformed
+  
     
     private void mostrarRutasDisponibles() {
         DefaultTableModel modelo = (DefaultTableModel) jTRutasDisponibles.getModel();
@@ -236,14 +232,6 @@ public class RutasView extends javax.swing.JFrame {
     }
    
     
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RutasView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAñadirRuta;
