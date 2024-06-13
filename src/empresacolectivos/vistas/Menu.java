@@ -29,7 +29,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuPasajerosView = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuRutasView = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -60,14 +60,14 @@ public class Menu extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cliente.png"))); // NOI18N
         jMenu2.setText("Pasajeros");
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
-        jMenuItem2.setText("Gestion de Pasajeros");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuPasajerosView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/nuevo-cliente.png"))); // NOI18N
+        jMenuPasajerosView.setText("Gestion de Pasajeros");
+        jMenuPasajerosView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuPasajerosViewActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(jMenuPasajerosView);
 
         jMenuBar1.add(jMenu2);
 
@@ -120,9 +120,10 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuPasajerosViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPasajerosViewActionPerformed
+         PasajerosView pasajerosFrame = new PasajerosView();
+    pasajerosFrame.setVisible(true);
+    }//GEN-LAST:event_jMenuPasajerosViewActionPerformed
 
     private void jMenuHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHorariosActionPerformed
          HorariosView horariosFrame = new HorariosView();
@@ -157,7 +158,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuHorarios;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuPasajerosView;
     private javax.swing.JMenuItem jMenuRutasView;
     // End of variables declaration//GEN-END:variables
 }
