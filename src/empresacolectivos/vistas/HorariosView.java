@@ -70,9 +70,11 @@ public class HorariosView extends javax.swing.JFrame {
         jLBuscarRuta = new javax.swing.JLabel();
         jCBuscarRuta = new javax.swing.JComboBox();
         jBBuscarRuta = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTMostrarRutasYHorarios.setBackground(new java.awt.Color(255, 255, 204));
         jTMostrarRutasYHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -83,15 +85,7 @@ public class HorariosView extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTMostrarRutasYHorarios);
 
         jBAñadir.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -113,17 +107,27 @@ public class HorariosView extends javax.swing.JFrame {
         jLHoraRuta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLHoraRuta.setText("Añada un horario de ruta:");
 
+        jCRuta.setBorder(null);
+
         jLHasta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLHasta.setText("Hasta");
 
         jLDesde.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLDesde.setText("Desde");
 
+        jCHoraInicio.setBorder(null);
+
+        jCHoraFinal.setBorder(null);
+
         jLBuscarHorario.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLBuscarHorario.setText("Busqueda por HS. de salida");
 
+        jCBuscarHorario.setBorder(null);
+
         jLBuscarRuta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLBuscarRuta.setText("Busqueda por ruta");
+
+        jCBuscarRuta.setBorder(null);
 
         jBBuscarRuta.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jBBuscarRuta.setText("Buscar");
@@ -132,6 +136,9 @@ public class HorariosView extends javax.swing.JFrame {
                 jBBuscarRutaActionPerformed(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBAñadir, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -147,6 +154,7 @@ public class HorariosView extends javax.swing.JFrame {
         jDesktopPane1.setLayer(jLBuscarRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jCBuscarRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(jBBuscarRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -167,8 +175,8 @@ public class HorariosView extends javax.swing.JFrame {
                             .addComponent(jCBuscarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(244, 244, 244)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBBuscarHorario)
-                            .addComponent(jBBuscarRuta)))
+                            .addComponent(jBBuscarRuta)
+                            .addComponent(jBBuscarHorario)))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addComponent(jCRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -182,11 +190,13 @@ public class HorariosView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jBAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(110, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLHasta)
                     .addComponent(jLDesde)
@@ -205,7 +215,7 @@ public class HorariosView extends javax.swing.JFrame {
                     .addComponent(jLBuscarRuta)
                     .addComponent(jCBuscarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBuscarRuta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -309,6 +319,7 @@ String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
     private javax.swing.JLabel jLDesde;
     private javax.swing.JLabel jLHasta;
     private javax.swing.JLabel jLHoraRuta;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTMostrarRutasYHorarios;
     // End of variables declaration//GEN-END:variables
