@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ovied
  */
-public class Horarios extends javax.swing.JFrame {
+public class HorariosView extends javax.swing.JFrame {
 
     private RutaData rutaData;
     private HorarioData horarioData;
@@ -25,7 +25,7 @@ public class Horarios extends javax.swing.JFrame {
         }
     }
 
-    public Horarios() {
+    public HorariosView() {
         initComponents();
         rutaData = new RutaData();
     horarioData = new HorarioData();
@@ -83,7 +83,15 @@ public class Horarios extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTMostrarRutasYHorarios);
 
         jBAñadir.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -281,7 +289,7 @@ String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Horarios().setVisible(true);
+                new HorariosView().setVisible(true);
             }
         });
     }

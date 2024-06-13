@@ -31,7 +31,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuRutasView = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuHorarios = new javax.swing.JMenuItem();
 
@@ -73,10 +73,20 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/historial1.png"))); // NOI18N
         jMenu3.setText("Rutas");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
-        jMenuItem3.setText("Gestion de rutas");
-        jMenu3.add(jMenuItem3);
+        jMenuRutasView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/categorias.png"))); // NOI18N
+        jMenuRutasView.setText("Gestion de rutas");
+        jMenuRutasView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuRutasViewActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuRutasView);
 
         jMenuBar1.add(jMenu3);
 
@@ -115,10 +125,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuHorariosActionPerformed
-         Horarios horariosFrame = new Horarios();
+         HorariosView horariosFrame = new HorariosView();
     horariosFrame.setVisible(true);
         
     }//GEN-LAST:event_jMenuHorariosActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuRutasViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRutasViewActionPerformed
+      RutasView rutasFrame = new RutasView();
+        rutasFrame.setVisible(true);
+    }//GEN-LAST:event_jMenuRutasViewActionPerformed
 
 
     public static void main(String args[]) {
@@ -139,6 +158,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuHorarios;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuRutasView;
     // End of variables declaration//GEN-END:variables
 }
