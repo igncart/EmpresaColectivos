@@ -3,6 +3,7 @@ package empresacolectivos;
 import empresacolectivos.Entidades.*;
 import empresacolectivos.accesoADatos.*;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 
@@ -10,6 +11,51 @@ public class EmpresaColectivos {
 
     
     public static void main(String[] args) {
+
+
+//                                                                            (((PasajeData)))            
+   
+ /*    
+PasajeData pd = new PasajeData();
+
+PasajeroData pasad = new PasajeroData();
+Pasajero pasajeroA = pasad.buscarPasajero(1);
+
+RutaData rd = new RutaData();
+Ruta rutaA = rd.buscarRuta(1);
+
+ColectivoData cd = new ColectivoData();
+Colectivo colectivoA = cd.buscarColectivo(1);
+
+//                                                                      - - - - registrar pasaje - - - -     
+/*
+        Pasaje pasaje1 = new Pasaje(pasajeroA, colectivoA, rutaA, LocalDate.of(2024, 06, 10), LocalTime.of(5, 45), 1, 20000);
+        Pasaje pasaje2 = new Pasaje(pasajeroA, colectivoA, rutaA, LocalDate.of(2024, 07, 11), LocalTime.of(5, 45), 4, 25000);
+        pd.registrarPasaje(pasaje1);
+        pd.registrarPasaje(pasaje2);
+
+        
+//                                                                      - - - - eliminar pasaje - - - -            
+        
+ pd.eliminarPasaje(2);
+       
+        
+ //                                                                       - - - - listar pasajes - - - -
+
+for (Pasaje pasaje3 : pd.listarPasajes()) {
+    
+    System.out.println("ID-pasaje: "+pasaje3.getId_Pasaje());
+    System.out.println("ID-pasajero: "+pasaje3.getPasajero().getId_Pasajero());
+    System.out.println("ID-colectivo: "+pasaje3.getColectivo().getId_Colectivo());
+    System.out.println("ID-ruta: "+pasaje3.getRuta().getId_Ruta());
+    System.out.println("Fecha del viaje: "+pasaje3.getFecha_Viaje());
+    System.out.println("Hora del viaje: "+pasaje3.getHora_Viaje());
+    System.out.println("Asiento número: "+pasaje3.getAsiento());
+    System.out.println("Precio: $"+pasaje3.getPrecio());
+    System.out.println("");
+}       
+
+*/ 
 
 
 //                                                                            (((HorarioData)))    
