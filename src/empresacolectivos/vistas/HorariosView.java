@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package empresacolectivos.vistas;
 
 import empresacolectivos.Entidades.Horario;
@@ -12,35 +8,35 @@ import java.util.List;
 import java.time.LocalTime;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-
-public class GestionHorarios extends javax.swing.JInternalFrame {
+/**
+ *
+ * @author ovied
+ */
+public class HorariosView extends javax.swing.JFrame {
 
     private RutaData rutaData;
     private HorarioData horarioData;
     
-
-
-    public GestionHorarios() {
-        initComponents();
-        rutaData = new RutaData();
-        horarioData = new HorarioData();
-            cargarHorariosFijos();
-            mostrarHorariosEnTabla(horarioData.listarHorarios());
-            cargarHorarios();
-            cargarComboBoxRutas();
-            cargarComboBusquedaRutas();
-    }
-
-     private void cargarHorarios() {
+    private void cargarHorarios() {
         jCBuscarHorario.removeAllItems();
         for (int i = 0; i < 24; i++) {
             String hora = String.format("%02d:00", i);
             jCBuscarHorario.addItem(hora);
         }
-    }   
-    
-        private void cargarComboBoxRutas() {
+    }
+
+    public HorariosView() {
+        initComponents();
+        rutaData = new RutaData();
+    horarioData = new HorarioData();
+    cargarHorariosFijos();
+    mostrarHorariosEnTabla(horarioData.listarHorarios());
+    cargarHorarios();
+    cargarComboBoxRutas();
+    cargarComboBusquedaRutas();
+    }
+
+    private void cargarComboBoxRutas() {
     List <Ruta> rutas = rutaData.listarRutas();
     jCRuta.removeAllItems();
     for (Ruta ruta : rutas) {
@@ -55,8 +51,6 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
         jCBuscarRuta.addItem(ruta); 
     }
 }
-
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -78,8 +72,7 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
         jBBuscarRuta = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
-        setClosable(true);
-        setResizable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTMostrarRutasYHorarios.setBackground(new java.awt.Color(255, 255, 204));
         jTMostrarRutasYHorarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -196,12 +189,8 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
                         .addComponent(jCHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jBAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-<<<<<<< Updated upstream:src/empresacolectivos/vistas/HorariosView.java
                 .addContainerGap(151, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-=======
-                .addContainerGap(14, Short.MAX_VALUE))
->>>>>>> Stashed changes:src/empresacolectivos/vistas/GestionHorarios.java
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,24 +215,15 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
                     .addComponent(jLBuscarRuta)
                     .addComponent(jCBuscarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBBuscarRuta))
-<<<<<<< Updated upstream:src/empresacolectivos/vistas/HorariosView.java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-=======
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
->>>>>>> Stashed changes:src/empresacolectivos/vistas/GestionHorarios.java
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1)
-                .addContainerGap())
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,36 +239,36 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
         LocalTime horaFinal = LocalTime.parse((String) jCHoraFinal.getSelectedItem());
 
         if (horaInicio.equals(horaFinal)) {
-            JOptionPane.showMessageDialog(this, "Nosotros no ofrecemos servicio de teletransporte. El horario de salida y llegada no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
+        JOptionPane.showMessageDialog(this, "Nosotros no ofrecemos servicio de teletransporte. El horario de salida y llegada no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+        
         Horario horario = new Horario(rutaSeleccionada, horaInicio, horaFinal, true);
         horarioData.registrarHorario(horario);
         mostrarHorariosEnTabla(horarioData.listarHorarios());
     }//GEN-LAST:event_jBAñadirActionPerformed
 
     private void jBBuscarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHorarioActionPerformed
-        String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
-        Horario horarioEncontrado = horarioData.buscarHorarioPorSalida(LocalTime.parse(horaSeleccionada));
-        if (horarioEncontrado != null) {
-            JOptionPane.showMessageDialog(this, "El horario de salida existe.");
-        } else {
-        }
+String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
+    Horario horarioEncontrado = horarioData.buscarHorarioPorSalida(LocalTime.parse(horaSeleccionada));
+    if (horarioEncontrado != null) {
+        JOptionPane.showMessageDialog(this, "El horario de salida existe.");
+    } else {
+        }   
     }//GEN-LAST:event_jBBuscarHorarioActionPerformed
 
     private void jBBuscarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarRutaActionPerformed
-        Ruta rutaSeleccionada = (Ruta) jCBuscarRuta.getSelectedItem();
-        Horario horarioEncontrado = horarioData.buscarHorarioPorRuta(rutaSeleccionada);
-        if (horarioEncontrado != null) {
-            JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " tiene los siguientes horarios: \n"
-                + horarioEncontrado.getHora_Salida() + " - " + horarioEncontrado.getHora_Llegada());
-        } else {
-            JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
+   Ruta rutaSeleccionada = (Ruta) jCBuscarRuta.getSelectedItem();
+    Horario horarioEncontrado = horarioData.buscarHorarioPorRuta(rutaSeleccionada);
+    if (horarioEncontrado != null) {
+        JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " tiene los siguientes horarios: \n" 
+            + horarioEncontrado.getHora_Salida() + " - " + horarioEncontrado.getHora_Llegada());
+    } else {
+        JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
         }
     }//GEN-LAST:event_jBBuscarRutaActionPerformed
 
-        private void mostrarHorariosEnTabla(List<Horario> horarios) {
+    private void mostrarHorariosEnTabla(List<Horario> horarios) {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Ruta");
     model.addColumn("Hora de salida");
@@ -306,7 +286,6 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
     jTMostrarRutasYHorarios.setModel(model);
 }
     
-    
     private void cargarHorariosFijos() {
        for (int i = 0; i < 24; i++) {
         String hora = String.format("%02d:00", i);
@@ -315,7 +294,15 @@ public class GestionHorarios extends javax.swing.JInternalFrame {
        }
     }
     
-  
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new HorariosView().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAñadir;

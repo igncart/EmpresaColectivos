@@ -1,4 +1,3 @@
-
 package empresacolectivos.vistas;
 
 import empresacolectivos.Entidades.Pasajero;
@@ -8,20 +7,22 @@ import java.util.List;
 import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author ovied
+ */
 
-
-public class GestionPasajeros extends javax.swing.JInternalFrame {
+public class PasajerosView extends javax.swing.JFrame {
 
       private DefaultTableModel modeloTabla;
       private PasajeroData pasajeroData;
     
-    public GestionPasajeros() {
+    public PasajerosView() {
         initComponents();
         pasajeroData = new PasajeroData();
         inicializarTabla();
         cargarPasajeros();
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,7 +56,8 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
         jBBuscarPorApellido = new javax.swing.JButton();
         jBBuscarPorDniAction = new javax.swing.JButton();
         jBVisualizarTodosPasajeros = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLGestion.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLGestion.setText("Gestion de pasajeros");
@@ -130,21 +132,22 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPApellidoLayout = new javax.swing.GroupLayout(jPApellido);
         jPApellido.setLayout(jPApellidoLayout);
         jPApellidoLayout.setHorizontalGroup(
             jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLGestion)
+                .addGap(317, 317, 317))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(jPApellidoLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPApellidoLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLRegistro)
                             .addGroup(jPApellidoLayout.createSequentialGroup()
@@ -165,80 +168,72 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
                                 .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jBBuscarPorNombre)
                                     .addComponent(jBBuscarPorApellido)
-                                    .addComponent(jBBuscarPorDniAction)))
-                            .addGroup(jPApellidoLayout.createSequentialGroup()
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLCorreo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTCorreo))
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLGestion)
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPApellidoLayout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPApellidoLayout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTCelular)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                                                .addComponent(jLDNI)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(jPApellidoLayout.createSequentialGroup()
-                                                .addComponent(jLEstado)
-                                                .addGap(34, 34, 34)))
-                                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckEstado)
-                                            .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jBGuardarPasajero))))))
+                                    .addComponent(jBBuscarPorDniAction))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPApellidoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBVisualizarTodosPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(126, 126, 126))
-            .addGroup(jPApellidoLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLCorreo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTCorreo))
+                            .addGroup(jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTCelular)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLDNI)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jLEstado)
+                                .addGap(34, 34, 34)))
+                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckEstado)
+                            .addGroup(jPApellidoLayout.createSequentialGroup()
+                                .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(jBGuardarPasajero)))
+                        .addContainerGap(126, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBVisualizarTodosPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(208, 208, 208))
         );
         jPApellidoLayout.setVerticalGroup(
             jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPApellidoLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addComponent(jLGestion)
-                .addGap(44, 44, 44)
+                .addGap(47, 47, 47)
                 .addComponent(jLRegistro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLNombre)
-                            .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLDNI)
-                            .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLCorreo)
-                            .addComponent(jTCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckEstado)
-                            .addComponent(jLEstado)))
-                    .addComponent(jBGuardarPasajero, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLNombre)
+                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLDNI)
+                    .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBGuardarPasajero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLCorreo)
+                    .addComponent(jTCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckEstado)
+                    .addComponent(jLEstado))
                 .addGap(38, 38, 38)
                 .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,25 +251,20 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
                     .addComponent(jBBuscarPorDniAction))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jBVisualizarTodosPasajeros)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(21, 21, 21))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 649, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -284,6 +274,7 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
 
     private void jBGuardarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarPasajeroActionPerformed
         guardarPasajero();
+              
     }//GEN-LAST:event_jBGuardarPasajeroActionPerformed
 
     private void jBBuscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorNombreActionPerformed
@@ -303,18 +294,18 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
         if (pasajero != null) {
             modeloTabla.setRowCount(0);
             modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
-                pasajero.getNombre(),
-                pasajero.getApellido(),
-                pasajero.getDni(),
-                pasajero.getCorreo(),
-                pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
+                    pasajero.getId_Pasajero(),
+                    pasajero.getNombre(),
+                    pasajero.getApellido(),
+                    pasajero.getDni(),
+                    pasajero.getCorreo(),
+                    pasajero.getTelefono(),
+                    pasajero.isEstado() ? "Activo" : "Inactivo"
             });
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el nombre ingresado.");
-        }
-        limpiarCamposBusqueda();
+        } 
+            limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorNombreActionPerformed
 
     private void jBBuscarPorApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorApellidoActionPerformed
@@ -334,18 +325,18 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
         if (pasajero != null) {
             modeloTabla.setRowCount(0);
             modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
-                pasajero.getNombre(),
-                pasajero.getApellido(),
-                pasajero.getDni(),
-                pasajero.getCorreo(),
-                pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
+                    pasajero.getId_Pasajero(),
+                    pasajero.getNombre(),
+                    pasajero.getApellido(),
+                    pasajero.getDni(),
+                    pasajero.getCorreo(),
+                    pasajero.getTelefono(),
+                    pasajero.isEstado() ? "Activo" : "Inactivo"
             });
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el apellido ingresado.");
         }
-        limpiarCamposBusqueda();
+            limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorApellidoActionPerformed
 
     private void jBBuscarPorDniActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorDniActionActionPerformed
@@ -365,28 +356,24 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
         if (pasajero != null) {
             modeloTabla.setRowCount(0);
             modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
-                pasajero.getNombre(),
-                pasajero.getApellido(),
-                pasajero.getDni(),
-                pasajero.getCorreo(),
-                pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
+                    pasajero.getId_Pasajero(),
+                    pasajero.getNombre(),
+                    pasajero.getApellido(),
+                    pasajero.getDni(),
+                    pasajero.getCorreo(),
+                    pasajero.getTelefono(),
+                    pasajero.isEstado() ? "Activo" : "Inactivo"
             });
         } else {
             JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el DNI ingresado.");
         }
-        limpiarCamposBusqueda();
+            limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorDniActionActionPerformed
 
     private void jBVisualizarTodosPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVisualizarTodosPasajerosActionPerformed
         limpiarTabla();
         cargarPasajeros();
     }//GEN-LAST:event_jBVisualizarTodosPasajerosActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void guardarPasajero() {
         String nombre = jTNombre.getText();
@@ -484,18 +471,17 @@ public class GestionPasajeros extends javax.swing.JInternalFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionPasajeros().setVisible(true);
+                new PasajerosView().setVisible(true);
             }
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscarPorApellido;
     private javax.swing.JButton jBBuscarPorDniAction;
     private javax.swing.JButton jBBuscarPorNombre;
     private javax.swing.JButton jBGuardarPasajero;
     private javax.swing.JButton jBVisualizarTodosPasajeros;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckEstado;
     private javax.swing.JLabel jLBuscarApellido;
     private javax.swing.JLabel jLBuscarDNI;
