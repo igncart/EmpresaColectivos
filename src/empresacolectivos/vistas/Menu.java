@@ -30,6 +30,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuPasajerosView = new javax.swing.JMenuItem();
+        jMenuColectivoView = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuRutasView = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
@@ -68,6 +69,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuPasajerosView);
+
+        jMenuColectivoView.setText("Gestion de Colectivos");
+        jMenuColectivoView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuColectivoViewActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuColectivoView);
 
         jMenuBar1.add(jMenu2);
 
@@ -140,6 +149,16 @@ public class Menu extends javax.swing.JFrame {
         rutasFrame.setVisible(true);
     }//GEN-LAST:event_jMenuRutasViewActionPerformed
 
+    private void jMenuColectivoViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuColectivoViewActionPerformed
+        // TODO add your handling code here:
+        jDesktopPane1.removeAll();
+        jDesktopPane1.repaint();
+        ColectivoView cv = new ColectivoView();
+        cv.setVisible(true);
+        jDesktopPane1.add(cv);
+        jDesktopPane1.moveToFront(cv);
+    }//GEN-LAST:event_jMenuColectivoViewActionPerformed
+
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -156,6 +175,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuColectivoView;
     private javax.swing.JMenuItem jMenuHorarios;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuPasajerosView;
