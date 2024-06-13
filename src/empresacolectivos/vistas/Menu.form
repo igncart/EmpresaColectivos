@@ -69,13 +69,16 @@
             <Property name="text" type="java.lang.String" value="Horarios"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuHorarios">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/nuevo.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Gestion de Horarios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuHorariosActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
