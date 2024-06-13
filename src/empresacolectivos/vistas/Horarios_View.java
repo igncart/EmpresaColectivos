@@ -78,6 +78,8 @@ public class Horarios_View extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
+        setResizable(true);
+
         jTMostrarRutasYHorarios.setBackground(new java.awt.Color(255, 255, 204));
         jTMostrarRutasYHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

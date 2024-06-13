@@ -54,6 +54,8 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jBVisualizarTodosPasajeros = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setResizable(true);
+
         jLGestion.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLGestion.setText("Gestion de pasajeros");
 

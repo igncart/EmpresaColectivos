@@ -44,6 +44,8 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jLTituloIngreso = new javax.swing.JLabel();
 
+        setResizable(true);
+
         jLOrigen.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLOrigen.setText("Origen");
 
