@@ -4,14 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/Entidades/Colectivo.java</file>
+            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/Horarios_View.java</file>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/EmpresaColectivos.java</file>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/accesoADatos/ColectivoData.java</file>
-            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/HorariosView.java</file>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/accesoADatos/RutaData.java</file>
-            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/PasajerosView.java</file>
+            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/Pasajeros_View.java</file>
+            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/Rutas_View.java</file>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/Menu.java</file>
+            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/ColectivoView.java</file>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/accesoADatos/HorarioData.java</file>
-            <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/vistas/RutasView.java</file>
             <file>file:/C:/Users/Compumar/OneDrive/Escritorio/2DO%20CUATRIMESTRE/EDA/EmpresaColectivos/src/empresacolectivos/accesoADatos/PasajeroData.java</file>
         </group>
     </open-files>

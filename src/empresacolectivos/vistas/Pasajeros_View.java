@@ -54,11 +54,18 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jBVisualizarTodosPasajeros = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setResizable(true);
 
-        jLGestion.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLGestion.setText("Gestion de pasajeros");
+        jPApellido.setBackground(new java.awt.Color(204, 204, 204));
+        jPApellido.setForeground(new java.awt.Color(153, 153, 153));
+        jPApellido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLGestion.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
+        jLGestion.setText("Gestion de pasajeros");
+        jPApellido.add(jLGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 40));
+
+        jTListaPasajeros.setBackground(new java.awt.Color(204, 204, 204));
         jTListaPasajeros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -72,63 +79,108 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTListaPasajeros);
 
+        jPApellido.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 470, 100));
+
+        jLRegistro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLRegistro.setText("Registro de nuevo pasajero:");
+        jPApellido.add(jLRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jLNombre.setText("Ingrese el nombre");
+        jPApellido.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        jTNombre.setBorder(null);
+        jPApellido.add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 80, -1));
 
         jLabel1.setText("Ingrese el apellido");
+        jPApellido.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        jTApellido.setBorder(null);
+        jPApellido.add(jTApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 80, -1));
 
         jLDNI.setText("Ingrese DNI");
+        jPApellido.add(jLDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        jTDNI.setBorder(null);
+        jPApellido.add(jTDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 80, -1));
 
         jLCorreo.setText("Ingrese un correo");
+        jPApellido.add(jLCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jTCorreo.setBorder(null);
+        jPApellido.add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 80, -1));
 
         jLabel2.setText("Ingrese su celular");
+        jPApellido.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
 
+        jTCelular.setBorder(null);
+        jPApellido.add(jTCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 80, 20));
+
+        jCheckEstado.setBackground(new java.awt.Color(204, 204, 204));
         jCheckEstado.setText("Activo");
+        jCheckEstado.setBorder(null);
+        jPApellido.add(jCheckEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 70, 20));
 
         jLEstado.setText("Estado");
+        jPApellido.add(jLEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 40, 20));
 
+        jBGuardarPasajero.setBackground(new java.awt.Color(255, 255, 204));
         jBGuardarPasajero.setText("Guardar");
         jBGuardarPasajero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarPasajeroActionPerformed(evt);
             }
         });
+        jPApellido.add(jBGuardarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 80, -1));
 
         jLBuscarNombre.setText("Buscar por nombre:");
+        jPApellido.add(jLBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
         jLBuscarApellido.setText("Buscar por apellido:");
+        jPApellido.add(jLBuscarApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
         jLBuscarDNI.setText("Buscar por D.N.I:");
+        jPApellido.add(jLBuscarDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+        jPApellido.add(jTBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 80, -1));
+        jPApellido.add(jTBuscarApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 80, -1));
+        jPApellido.add(jTBuscarDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 80, -1));
 
+        jBBuscarPorNombre.setBackground(new java.awt.Color(255, 255, 204));
         jBBuscarPorNombre.setText("Buscar");
         jBBuscarPorNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarPorNombreActionPerformed(evt);
             }
         });
+        jPApellido.add(jBBuscarPorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, -1, -1));
 
+        jBBuscarPorApellido.setBackground(new java.awt.Color(255, 255, 204));
         jBBuscarPorApellido.setText("Buscar");
         jBBuscarPorApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarPorApellidoActionPerformed(evt);
             }
         });
+        jPApellido.add(jBBuscarPorApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
 
+        jBBuscarPorDniAction.setBackground(new java.awt.Color(255, 255, 204));
         jBBuscarPorDniAction.setText("Buscar");
         jBBuscarPorDniAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarPorDniActionActionPerformed(evt);
             }
         });
+        jPApellido.add(jBBuscarPorDniAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
 
+        jBVisualizarTodosPasajeros.setBackground(new java.awt.Color(255, 255, 204));
         jBVisualizarTodosPasajeros.setText("Mostrar todos los pasajeros");
         jBVisualizarTodosPasajeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVisualizarTodosPasajerosActionPerformed(evt);
             }
         });
+        jPApellido.add(jBVisualizarTodosPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 470, 30));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,148 +188,22 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout jPApellidoLayout = new javax.swing.GroupLayout(jPApellido);
-        jPApellido.setLayout(jPApellidoLayout);
-        jPApellidoLayout.setHorizontalGroup(
-            jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLGestion)
-                .addGap(317, 317, 317))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jBVisualizarTodosPasajeros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLRegistro)
-                            .addGroup(jPApellidoLayout.createSequentialGroup()
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLBuscarApellido)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                        .addComponent(jTBuscarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLBuscarNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLBuscarDNI)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(43, 43, 43)
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jBBuscarPorNombre)
-                                    .addComponent(jBBuscarPorApellido)
-                                    .addComponent(jBBuscarPorDniAction)))
-                            .addGroup(jPApellidoLayout.createSequentialGroup()
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLCorreo)
-                                        .addGap(10, 10, 10)))
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTCorreo)
-                                    .addComponent(jTNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLDNI)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(jPApellidoLayout.createSequentialGroup()
-                                        .addComponent(jLEstado)
-                                        .addGap(34, 34, 34)))
-                                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckEstado))))))
-                .addGap(12, 12, 12)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBGuardarPasajero)
-                    .addComponent(jButton1))
-                .addGap(106, 106, 106))
-        );
-        jPApellidoLayout.setVerticalGroup(
-            jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPApellidoLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLGestion)
-                .addGap(47, 47, 47)
-                .addComponent(jLRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLNombre)
-                    .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLDNI)
-                    .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBGuardarPasajero))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLCorreo)
-                    .addComponent(jTCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckEstado)
-                    .addComponent(jLEstado))
-                .addGap(38, 38, 38)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTBuscarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLBuscarNombre)
-                    .addComponent(jBBuscarPorNombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLBuscarApellido)
-                    .addComponent(jTBuscarApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscarPorApellido))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLBuscarDNI)
-                    .addComponent(jTBuscarDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscarPorDniAction))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jBVisualizarTodosPasajeros)
-                .addGap(18, 18, 18)
-                .addGroup(jPApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPApellidoLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(114, 114, 114))))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(209, 209, 209)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();

@@ -80,6 +80,8 @@ public class Horarios_View extends javax.swing.JInternalFrame {
 
         setResizable(true);
 
+        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jTMostrarRutasYHorarios.setBackground(new java.awt.Color(255, 255, 204));
         jTMostrarRutasYHorarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,6 +96,8 @@ public class Horarios_View extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTMostrarRutasYHorarios);
 
+        jDesktopPane1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 268, 456, 114));
+
         jBAñadir.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jBAñadir.setText("Añadir");
         jBAñadir.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +105,7 @@ public class Horarios_View extends javax.swing.JInternalFrame {
                 jBAñadirActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jBAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 99, 79, -1));
 
         jBBuscarHorario.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jBBuscarHorario.setText("Buscar");
@@ -109,31 +114,42 @@ public class Horarios_View extends javax.swing.JInternalFrame {
                 jBBuscarHorarioActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jBBuscarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 165, -1, -1));
 
         jLHoraRuta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLHoraRuta.setText("Añada un horario de ruta:");
+        jDesktopPane1.add(jLHoraRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, 25));
 
         jCRuta.setBorder(null);
+        jDesktopPane1.add(jCRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 180, -1));
 
         jLHasta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLHasta.setText("Hasta");
+        jDesktopPane1.add(jLHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(306, 72, -1, -1));
 
         jLDesde.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLDesde.setText("Desde");
+        jDesktopPane1.add(jLDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 72, -1, -1));
 
         jCHoraInicio.setBorder(null);
+        jDesktopPane1.add(jCHoraInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 73, -1, -1));
 
         jCHoraFinal.setBorder(null);
+        jDesktopPane1.add(jCHoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 73, -1, -1));
 
         jLBuscarHorario.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLBuscarHorario.setText("Busqueda por HS. de salida");
+        jDesktopPane1.add(jLBuscarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 166, -1, -1));
 
         jCBuscarHorario.setBorder(null);
+        jDesktopPane1.add(jCBuscarHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 167, -1, -1));
 
         jLBuscarRuta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLBuscarRuta.setText("Busqueda por ruta");
+        jDesktopPane1.add(jLBuscarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 209, -1, -1));
 
         jCBuscarRuta.setBorder(null);
+        jDesktopPane1.add(jCBuscarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 190, -1));
 
         jBBuscarRuta.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jBBuscarRuta.setText("Buscar");
@@ -142,9 +158,11 @@ public class Horarios_View extends javax.swing.JInternalFrame {
                 jBBuscarRutaActionPerformed(evt);
             }
         });
+        jDesktopPane1.add(jBBuscarRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 208, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jDesktopPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 468, 12));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,96 +170,7 @@ public class Horarios_View extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jBAñadir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jBBuscarHorario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLHoraRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jCRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLHasta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLDesde, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jCHoraInicio, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jCHoraFinal, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLBuscarHorario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jCBuscarHorario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jLBuscarRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jCBuscarRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jBBuscarRuta, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1)
-                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLHoraRuta)
-                                    .addComponent(jLBuscarRuta)
-                                    .addComponent(jLBuscarHorario))
-                                .addGap(5, 5, 5)
-                                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCBuscarHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jCBuscarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(244, 244, 244)
-                                        .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jBBuscarRuta)
-                                            .addComponent(jBBuscarHorario)))
-                                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                                        .addComponent(jCRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLDesde)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLHasta)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jCHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBAñadir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(jButton1)))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLHasta)
-                    .addComponent(jLDesde)
-                    .addComponent(jCRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBAñadir)
-                    .addComponent(jCHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLHoraRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLBuscarHorario)
-                    .addComponent(jCBuscarHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscarHorario))
-                .addGap(35, 35, 35)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLBuscarRuta)
-                    .addComponent(jCBuscarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBBuscarRuta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
+        jDesktopPane1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 394, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,15 +178,14 @@ public class Horarios_View extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
         );
 
         pack();
