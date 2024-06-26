@@ -4,17 +4,38 @@
  */
 package empresacolectivos.vistas;
 
+import empresacolectivos.Entidades.*;
+import empresacolectivos.accesoADatos.*;
+import java.util.List;
+
 /**
  *
  * @author IGNACIO
  */
 public class Ventas_View extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Ventas_View
-     */
+    private List<Pasajero> listaPasajeros;
+    private List<Ruta> listaRutas;
+    private List<Colectivo> listaColectivos;
+    
+    private PasajeroData pasajerData;
+    private RutaData rutData;
+    private ColectivoData coleData;
+    
     public Ventas_View() {
         initComponents();
+        
+        
+        pasajerData = new PasajeroData();
+        listaPasajeros = pasajerData.listarPasajeros();
+        rutData = new RutaData();
+        listaRutas =  rutData.listarRutas();
+        coleData = new ColectivoData();
+        listaColectivos = coleData.listarColectivo();
+        
+        cargarPasajeros();
+        cargarRutas();
+        cargarColectivos();
     }
 
     /**
@@ -68,8 +89,6 @@ public class Ventas_View extends javax.swing.JInternalFrame {
 
         jbBuscarXid.setText("Buscar");
 
-        jcbColectivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jftFechaViaje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         jbEliminar.setText("Eliminar");
@@ -88,11 +107,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
 
         jlPasajero.setText("Pasajero:");
 
-        jcbPasajero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jlRuta.setText("Ruta:");
-
-        jcbRuta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jlHoraViaje.setText("Hora del viaje:");
 
@@ -135,19 +150,21 @@ public class Ventas_View extends javax.swing.JInternalFrame {
                             .addComponent(jlBuscarXid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcbPasajero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcbRuta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcbColectivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jftHoraViaje, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jftFechaViaje, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcbAsiento, javax.swing.GroupLayout.Alignment.LEADING, 0, 93, Short.MAX_VALUE)
+                                    .addComponent(jftPrecio))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jtxBuscarXid, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbBuscarXid))
-                            .addComponent(jcbPasajero, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbColectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbAsiento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jftFechaViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jftHoraViaje, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jftPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbBuscarXid, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)))))
+                .addGap(70, 70, 70))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,18 +221,18 @@ public class Ventas_View extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(63, 63, 63))
+                .addGap(111, 111, 111))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -228,6 +245,26 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalirActionPerformed
 
 
+    
+   private void cargarPasajeros(){   
+        for (Pasajero pasajero : listaPasajeros) {
+            jcbPasajero.addItem(pasajero);
+        }
+    }
+   
+      private void cargarRutas(){   
+        for (Ruta ruta : listaRutas) {
+            jcbRuta.addItem(ruta);
+        }
+    }
+      
+      private void cargarColectivos(){   
+        for (Colectivo colectivo : listaColectivos) {
+            jcbColectivo.addItem(colectivo);
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -240,9 +277,9 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalir;
     private javax.swing.JButton jbVenderPasaje;
     private javax.swing.JComboBox<String> jcbAsiento;
-    private javax.swing.JComboBox<String> jcbColectivo;
-    private javax.swing.JComboBox<String> jcbPasajero;
-    private javax.swing.JComboBox<String> jcbRuta;
+    private javax.swing.JComboBox<Colectivo> jcbColectivo;
+    private javax.swing.JComboBox<Pasajero> jcbPasajero;
+    private javax.swing.JComboBox<Ruta> jcbRuta;
     private javax.swing.JFormattedTextField jftFechaViaje;
     private javax.swing.JFormattedTextField jftHoraViaje;
     private javax.swing.JFormattedTextField jftPrecio;

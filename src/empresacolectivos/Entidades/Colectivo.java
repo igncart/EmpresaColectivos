@@ -80,7 +80,7 @@ public class Colectivo {
 
     @Override
     public String toString() {
-        return "Colectivo{" + "id_Colectivo=" + id_Colectivo + ", matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", capacidad=" + capacidad + ", estado=" + estado + '}';
+        return "Matrícula: " + matricula +" // "+ marca + " - " + modelo +"";
     }
     
     

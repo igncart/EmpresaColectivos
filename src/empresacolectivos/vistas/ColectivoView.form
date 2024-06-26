@@ -40,7 +40,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Eras Light ITC" size="36" style="3"/>
+              <Font name="Eras Light ITC" size="24" style="3"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registro de Colectivos"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -54,7 +54,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="70" y="30" width="360" height="-1"/>
+              <AbsoluteConstraints x="130" y="30" width="270" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

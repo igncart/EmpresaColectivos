@@ -47,10 +47,10 @@ public class ColectivoView extends javax.swing.JInternalFrame {
         jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Eras Light ITC", 3, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Eras Light ITC", 3, 24)); // NOI18N
         jLabel1.setText("Registro de Colectivos");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 255), new java.awt.Color(0, 0, 0)));
-        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 360, -1));
+        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 270, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Ingrese Matricula:");
