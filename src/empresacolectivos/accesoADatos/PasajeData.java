@@ -268,5 +268,52 @@ public class PasajeData {
         return pasajes;
     }
      
+     public Pasaje buscarPasajePorId(int id) {
+         
+         String sql = "SELECT id_pasaje, id_pasajero, id_colectivo, id_ruta, fecha_viaje, hora_viaje, asiento, precio "
+                          + "FROM pasaje "
+                          + "WHERE id_pasaje = ?";
+         
+         Pasaje pasaje = null;
+         
+         try {
+             
+             PreparedStatement ps = con.prepareStatement(sql);
+             
+             ps.setInt(1, id);
+             ResultSet rs = ps.executeQuery();
+             
+             if (rs.next()) {
+                 
+                 pasaje = new Pasaje();
+                 
+                 pasaje.setId_Pasaje(id);
+                 Pasajero pasajero = pd.buscarPasajero(rs.getInt("id_pasajero"));
+                 pasaje.setPasajero(pasajero);
+                 Colectivo colectivo = cd.buscarColectivo(rs.getInt("id_colectivo"));
+                 pasaje.setColectivo(colectivo);
+                 Ruta ruta = rd.buscarRuta(rs.getInt("id_ruta"));
+                 pasaje.setRuta(ruta);
+                 pasaje.setFecha_Viaje(rs.getDate("fecha_viaje").toLocalDate());
+                 pasaje.setHora_Viaje(rs.getTime("hora_viaje").toLocalTime());
+                 pasaje.setAsiento(rs.getInt("asiento"));
+                 pasaje.setPrecio(rs.getDouble("precio"));
+                 
+
+             } else {
+                 JOptionPane.showMessageDialog(null, "El pasaje que busca no existe.");
+             }
+             
+             
+             
+         } catch (SQLException ex) {
+             
+             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla pasaje.");
+         }
+         
+         
      
+     
+     return pasaje;
+     }
 }

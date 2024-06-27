@@ -21,6 +21,8 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     private PasajeroData pasajerData;
     private RutaData rutData;
     private ColectivoData coleData;
+    private PasajeData pasajeData;
+    private Pasaje pasajeActual = new Pasaje();
     
     public Ventas_View() {
         initComponents();
@@ -32,6 +34,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         listaRutas =  rutData.listarRutas();
         coleData = new ColectivoData();
         listaColectivos = coleData.listarColectivo();
+        pasajeData = new PasajeData();
         
         cargarPasajeros();
         cargarRutas();
@@ -88,6 +91,11 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         jLabel2.setText("GESTIÓN DE VENTAS");
 
         jbBuscarXid.setText("Buscar");
+        jbBuscarXid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarXidActionPerformed(evt);
+            }
+        });
 
         jftFechaViaje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
@@ -243,6 +251,26 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
        dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbBuscarXidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarXidActionPerformed
+        int id = Integer.parseInt(jtxBuscarXid.getText());
+        pasajeActual = pasajeData.buscarPasajePorId(id);
+        
+        if (pasajeActual != null) {
+            
+            jtxBuscarXid.setText(""+pasajeActual.getId_Pasaje());
+            Pasajero pasajero = pasajeActual.getPasajero();
+            jcbPasajero.setSelectedItem(pasajero);
+            Ruta ruta = pasajeActual.getRuta();
+            jcbRuta.setSelectedItem(ruta);
+            Colectivo colectivo = pasajeActual.getColectivo();
+            jcbColectivo.setSelectedItem(colectivo);
+            
+            
+            
+            
+        }
+    }//GEN-LAST:event_jbBuscarXidActionPerformed
 
 
     

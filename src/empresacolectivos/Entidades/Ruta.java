@@ -70,6 +70,36 @@ public class Ruta {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.id_Ruta;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ruta other = (Ruta) obj;
+        return this.id_Ruta == other.id_Ruta;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    @Override
     public String toString() {
         return origen + " - " + destino;
     }

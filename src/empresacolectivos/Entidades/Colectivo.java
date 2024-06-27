@@ -79,6 +79,34 @@ public class Colectivo {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + this.id_Colectivo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Colectivo other = (Colectivo) obj;
+        return this.id_Colectivo == other.id_Colectivo;
+    }
+
+    
+    
+    
+    
+    
+    
+    @Override
     public String toString() {
         return "Matrícula: " + matricula +" // "+ marca + " - " + modelo +"";
     }
