@@ -142,7 +142,7 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         jPanel1.add(jTBusquedaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 60, -1));
         jPanel1.add(jTBusquedaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 60, -1));
 
-        jPanel1.add(jCRutasExistentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
+        jPanel1.add(jCRutasExistentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, -1));
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,13 +150,13 @@ public class Rutas_View extends javax.swing.JInternalFrame {
                 jBEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, -1, -1));
+        jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

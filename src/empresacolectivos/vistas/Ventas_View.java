@@ -42,6 +42,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         cargarPasajeros();
         cargarRutas();
         cargarColectivos();
+        cargarHorarios();
     }
 
     @SuppressWarnings("unchecked")
@@ -490,10 +491,10 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbVenderPasajeActionPerformed
 
     private void jbMostrarPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarPasajesActionPerformed
-            // Obtener todos los pasajes vendidos
+            
     List<Pasaje> pasajes = pasajeData.listarPasajes();
     
-    // Mostrar los pasajes en la tabla jTable2
+    
     DefaultTableModel modelo = new DefaultTableModel();
     modelo.addColumn("ID");
     modelo.addColumn("Pasajero");
@@ -583,14 +584,14 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbFiltrarRutaActionPerformed
 
     private void jbFiltrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltrarPasajeroActionPerformed
-    // Obtener el pasajero seleccionado del JComboBox jcbBuscarPasajeros
+   
         Pasajero pasajeroSeleccionado = (Pasajero) jcbBuscarPasajeros.getSelectedItem();
         
         if (pasajeroSeleccionado != null) {
-            // Llamar al método listarPasajesPorPasajero de pasajeData para obtener los pasajes del pasajero seleccionado
+            
             List<Pasaje> pasajes = pasajeData.listarPasajesPorPasajero(pasajeroSeleccionado);
             
-            // Crear el modelo de la tabla jTable2 para mostrar los pasajes filtrados
+            
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.addColumn("ID Pasaje");
             modelo.addColumn("Pasajero");
@@ -603,7 +604,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
             modelo.addColumn("Asiento");
             modelo.addColumn("Precio");
             
-            // Llenar el modelo con los pasajes obtenidos
+            
             for (Pasaje pasaje : pasajes) {
                 modelo.addRow(new Object[] {
                     pasaje.getId_Pasaje(),
@@ -619,7 +620,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
                 });
             }
             
-            // Asignar el modelo a jTable2 para mostrar los pasajes filtrados
+            
             jTable2.setModel(modelo);
         } else {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un pasajero.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -669,6 +670,22 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         jftPrecio.setValue(null); 
     }
     
+    private void cargarHorarios() {
+    jcbBuscarHorarios.removeAllItems();
+    
+    
+    for (int hora = 0; hora < 24; hora++) {
+        
+        String horaCompleta = String.format("%02d:00", hora);
+        jcbBuscarHorarios.addItem(horaCompleta);
+        
+        
+        for (int minuto = 15; minuto <= 45; minuto += 15) {
+            String horaIntervalo = String.format("%02d:%02d", hora, minuto);
+            jcbBuscarHorarios.addItem(horaIntervalo);
+        }
+    }
+}
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -690,7 +707,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbSalir;
     private javax.swing.JButton jbVenderPasaje;
     private javax.swing.JComboBox<String> jcbAsiento;
-    private javax.swing.JComboBox<Horario> jcbBuscarHorarios;
+    private javax.swing.JComboBox<String> jcbBuscarHorarios;
     private javax.swing.JComboBox<Pasajero> jcbBuscarPasajeros;
     private javax.swing.JComboBox<Ruta> jcbBuscarRutas;
     private javax.swing.JComboBox<Colectivo> jcbColectivo;
