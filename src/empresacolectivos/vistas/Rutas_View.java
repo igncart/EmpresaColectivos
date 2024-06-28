@@ -20,6 +20,7 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         rutaData = new RutaData();
         mostrarRutasDisponibles();
         cargarCiudadesCapitales();
+        mostrarRutasEnComboBox();
     }
 
     @SuppressWarnings("unchecked")
@@ -31,18 +32,20 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         jLBuscarOrigen = new javax.swing.JLabel();
         jCOrigen = new javax.swing.JComboBox();
         jCDestino = new javax.swing.JComboBox<>();
-        jCBusquedaOrigen = new javax.swing.JComboBox();
         jLDestino = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTRutasDisponibles = new javax.swing.JTable();
-        jCBusquedaDestino = new javax.swing.JComboBox();
         jBAñadirRuta = new javax.swing.JButton();
         jBBuscarRutasOrigen = new javax.swing.JButton();
         jBBuscarPorDestino = new javax.swing.JButton();
         jLBuscarDestino = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLTituloIngreso = new javax.swing.JLabel();
+        jTBusquedaOrigen = new javax.swing.JTextField();
+        jTBusquedaDestino = new javax.swing.JTextField();
+        jCRutasExistentes = new javax.swing.JComboBox();
+        jBEliminar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(true);
@@ -61,8 +64,6 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         jPanel1.add(jCOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 87, 130, -1));
 
         jPanel1.add(jCDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 160, -1));
-
-        jPanel1.add(jCBusquedaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 193, -1, -1));
 
         jLDestino.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLDestino.setText("Destino");
@@ -96,8 +97,6 @@ public class Rutas_View extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 420, 110));
 
-        jPanel1.add(jCBusquedaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 258, -1, -1));
-
         jBAñadirRuta.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jBAñadirRuta.setText("Añadir");
         jBAñadirRuta.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +117,11 @@ public class Rutas_View extends javax.swing.JInternalFrame {
 
         jBBuscarPorDestino.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jBBuscarPorDestino.setText("Buscar");
+        jBBuscarPorDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarPorDestinoActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBBuscarPorDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 257, -1, -1));
 
         jLBuscarDestino.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
@@ -135,6 +139,18 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         jLTituloIngreso.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLTituloIngreso.setText("Ingresos de nuevas rutas");
         jPanel1.add(jLTituloIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, -1, -1));
+        jPanel1.add(jTBusquedaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 80, -1));
+        jPanel1.add(jTBusquedaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 80, -1));
+
+        jPanel1.add(jCRutasExistentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
+
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,15 +189,73 @@ public class Rutas_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBAñadirRutaActionPerformed
 
     private void jBBuscarRutasOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarRutasOrigenActionPerformed
-
+    String origenBusqueda = jTBusquedaOrigen.getText().trim();
+    
+    if (origenBusqueda.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Por favor ingrese un origen para buscar.");
+        return;
+    }
+    
+    Ruta rutaEncontrada = rutaData.buscarRutaPorOrigen(origenBusqueda);
+    
+    if (rutaEncontrada != null) {
+        DefaultTableModel modelo = (DefaultTableModel) jTRutasDisponibles.getModel();
+        modelo.setRowCount(0);
+        
+        Object[] fila = {rutaEncontrada.getOrigen(), rutaEncontrada.getDestino()};
+        modelo.addRow(fila);
+    } else {
+        JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
+    }
+    
     }//GEN-LAST:event_jBBuscarRutasOrigenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBBuscarPorDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorDestinoActionPerformed
+    String destinoBusqueda = jTBusquedaDestino.getText().trim().toLowerCase();
+    
+    if (destinoBusqueda.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Por favor ingrese un destino para buscar.");
+        return;
+    }
+    
+    if (!destinoBusqueda.matches("^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+$")) {
+        JOptionPane.showMessageDialog(null, "El destino debe contener solo letras.");
+        return;
+    }
+    
+    Ruta rutaEncontrada = rutaData.buscarRutaPorDestino(destinoBusqueda);
+    
+    if (rutaEncontrada != null) {
+        DefaultTableModel modelo = (DefaultTableModel) jTRutasDisponibles.getModel();
+        modelo.setRowCount(0); 
+        
+        Object[] fila = {rutaEncontrada.getOrigen(), rutaEncontrada.getDestino()};
+        modelo.addRow(fila);
+    } else {
+        JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
+    }
+
+    }//GEN-LAST:event_jBBuscarPorDestinoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+    Ruta rutaSeleccionada = (Ruta) jCRutasExistentes.getSelectedItem();
+    
+    if (rutaSeleccionada == null) {
+        JOptionPane.showMessageDialog(null, "Seleccione una ruta para eliminar.");
+        return;
+    }
+    
+    int idRuta = rutaSeleccionada.getId_Ruta();
+    rutaData.eliminarRuta(idRuta);
+    mostrarRutasDisponibles();
+    }//GEN-LAST:event_jBEliminarActionPerformed
   
     
-    private void mostrarRutasDisponibles() {
+  private void mostrarRutasDisponibles() {
         DefaultTableModel modelo = (DefaultTableModel) jTRutasDisponibles.getModel();
         modelo.setRowCount(0);
 
@@ -192,7 +266,13 @@ public class Rutas_View extends javax.swing.JInternalFrame {
             modelo.addRow(fila);
         }
     }
-   
+
+    private void mostrarRutasEnComboBox() {
+        List<Ruta> rutas = rutaData.listarRutas();
+        DefaultComboBoxModel<Ruta> modelo = new DefaultComboBoxModel<>(rutas.toArray(new Ruta[0]));
+        jCRutasExistentes.setModel(modelo);
+    }
+    
     private void cargarCiudadesCapitales() {
         jCOrigen.setModel(new DefaultComboBoxModel<>(ciudadesCapitales));
         jCDestino.setModel(new DefaultComboBoxModel<>(ciudadesCapitales));
@@ -204,11 +284,11 @@ public class Rutas_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBAñadirRuta;
     private javax.swing.JButton jBBuscarPorDestino;
     private javax.swing.JButton jBBuscarRutasOrigen;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jCBusquedaDestino;
-    private javax.swing.JComboBox jCBusquedaOrigen;
     private javax.swing.JComboBox<String> jCDestino;
     private javax.swing.JComboBox jCOrigen;
+    private javax.swing.JComboBox jCRutasExistentes;
     private javax.swing.JLabel jLBuscarDestino;
     private javax.swing.JLabel jLBuscarOrigen;
     private javax.swing.JLabel jLDestino;
@@ -217,6 +297,8 @@ public class Rutas_View extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTBusquedaDestino;
+    private javax.swing.JTextField jTBusquedaOrigen;
     private javax.swing.JTable jTRutasDisponibles;
     // End of variables declaration//GEN-END:variables
 }
