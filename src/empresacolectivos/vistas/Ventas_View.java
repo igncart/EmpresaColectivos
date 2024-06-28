@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package empresacolectivos.vistas;
 
 import empresacolectivos.Entidades.*;
@@ -13,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -118,6 +115,11 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         jftFechaViaje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/dd"))));
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jlAsiento.setText("Asiento N°:");
 
@@ -261,6 +263,11 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         );
 
         jbMostrarPasajes.setText("Mostrar todos los pasajes vendidos");
+        jbMostrarPasajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMostrarPasajesActionPerformed(evt);
+            }
+        });
 
         jbFiltrarRuta.setText("Filtrar por ruta");
 
@@ -268,6 +275,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
 
         jbFiltrarHorario.setText("Filtrar por horario");
 
+        jTable2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -470,6 +478,59 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     pasajeData.registrarPasaje(pasaje);
     limpiarCampos();
     }//GEN-LAST:event_jbVenderPasajeActionPerformed
+
+    private void jbMostrarPasajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMostrarPasajesActionPerformed
+            // Obtener todos los pasajes vendidos
+    List<Pasaje> pasajes = pasajeData.listarPasajes();
+    
+    // Mostrar los pasajes en la tabla jTable2
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("ID");
+    modelo.addColumn("Pasajero");
+    modelo.addColumn("DNI");
+    modelo.addColumn("Origen");
+    modelo.addColumn("Destino");
+    modelo.addColumn("Colectivo");
+    modelo.addColumn("Fecha Viaje");
+    modelo.addColumn("Hora Viaje");
+    modelo.addColumn("Asiento");
+    modelo.addColumn("Precio");
+    
+    for (Pasaje pasaje : pasajes) {
+        Object[] fila = {
+            pasaje.getId_Pasaje(),
+            pasaje.getPasajero().getNombre(),
+            pasaje.getPasajero().getDni(),
+            pasaje.getRuta().getOrigen(),
+            pasaje.getRuta().getDestino(),
+            pasaje.getColectivo().getModelo(),
+            pasaje.getFecha_Viaje(),
+            pasaje.getHora_Viaje(),
+            pasaje.getAsiento(),
+            pasaje.getPrecio()
+        };
+        modelo.addRow(fila);
+    }
+    
+    jTable2.setModel(modelo);
+    }//GEN-LAST:event_jbMostrarPasajesActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+            // Obtener el ID del pasaje a eliminar (previamente buscado)
+    int id = Integer.parseInt(jtxBuscarXid.getText().trim());
+    
+    // Confirmar la eliminación con un mensaje de diálogo
+    int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea eliminar el pasaje?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+    
+    if (confirmacion == JOptionPane.YES_OPTION) {
+        // Eliminar el pasaje de la base de datos
+        pasajeData.eliminarPasaje(id);
+        
+        // Limpiar campos y actualizar interfaz
+        limpiarCampos();
+        jbMostrarPasajesActionPerformed(evt); // Actualizar la tabla de pasajes
+    }
+    }//GEN-LAST:event_jbEliminarActionPerformed
 
 
     

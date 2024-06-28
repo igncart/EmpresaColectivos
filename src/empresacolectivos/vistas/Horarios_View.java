@@ -206,7 +206,7 @@ private void cargarHorarios() {
         LocalTime horaFinal = LocalTime.parse((String) jCHoraFinal.getSelectedItem());
 
         if (horaInicio.equals(horaFinal)) {
-            JOptionPane.showMessageDialog(this, "Nosotros no ofrecemos servicio de teletransporte. El horario de salida y llegada no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nosotros no ofrecemos servicio de teletransporte. El horario de salida y llegada no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
@@ -232,7 +232,7 @@ private void cargarHorarios() {
             model.addRow(row);
         }
     } else {
-        JOptionPane.showMessageDialog(this, "No se encontraron horarios para la hora seleccionada.");
+        JOptionPane.showMessageDialog(null, "No se encontraron horarios para la hora seleccionada.");
     }
     }//GEN-LAST:event_jBBuscarHorarioActionPerformed
 
@@ -253,7 +253,7 @@ private void cargarHorarios() {
             model.addRow(row);
         }
     } else {
-        JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
+        JOptionPane.showMessageDialog(null, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
     }
     }//GEN-LAST:event_jBBuscarRutaActionPerformed
 
