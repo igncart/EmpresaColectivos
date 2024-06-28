@@ -301,7 +301,7 @@ public class PasajeData {
                  
 
              } else {
-                 JOptionPane.showMessageDialog(null, "El pasaje que busca no existe.");
+                 JOptionPane.showMessageDialog(null, "No existe un pasaje con ese número de ID.");
              }
              
              

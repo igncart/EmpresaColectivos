@@ -189,7 +189,42 @@ public class ColectivoData {
     }
 
     return colectivo;
-}
+    }
+    
+    public List<Integer> obtenerAsientosOcupados(int idColectivo) {
+        List<Integer> asientosOcupados = new ArrayList<>();
+        String sql = "SELECT asiento FROM pasaje WHERE id_colectivo = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idColectivo);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                asientosOcupados.add(rs.getInt("asiento"));
+            }
+
+            ps.close();
+            rs.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener los asientos ocupados.");
+        }
+
+        return asientosOcupados;
+    }
+    
+    public List<Integer> obtenerAsientosDisponibles(int idColectivo, int capacidadTotal) {
+        List<Integer> asientosOcupados = obtenerAsientosOcupados(idColectivo);
+        List<Integer> asientosDisponibles = new ArrayList<>();
+
+        for (int i = 1; i <= capacidadTotal; i++) {
+            if (!asientosOcupados.contains(i)) {
+                asientosDisponibles.add(i);
+            }
+        }
+
+        return asientosDisponibles;
+    }
     
 } 
     
