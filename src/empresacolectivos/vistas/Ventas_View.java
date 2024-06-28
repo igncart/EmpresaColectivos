@@ -285,6 +285,11 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         });
 
         jbFiltrarHorario.setText("Filtrar por horario");
+        jbFiltrarHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFiltrarHorarioActionPerformed(evt);
+            }
+        });
 
         jTable2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -626,6 +631,49 @@ public class Ventas_View extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar un pasajero.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbFiltrarPasajeroActionPerformed
+
+    private void jbFiltrarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltrarHorarioActionPerformed
+    // Obtener el horario seleccionado en jcbBuscarHorarios
+    String horarioSeleccionadoStr = (String) jcbBuscarHorarios.getSelectedItem();
+    
+    // Convertir el horario seleccionado a LocalTime
+    LocalTime horarioSeleccionado = LocalTime.parse(horarioSeleccionadoStr, DateTimeFormatter.ofPattern("HH:mm"));
+    
+    // Filtrar los pasajes por el horario seleccionado usando el método de PasajeData
+    List<Pasaje> pasajes = pasajeData.listarPasajesPorHorario(horarioSeleccionado);
+    
+    // Crear el modelo de tabla
+    DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("ID Pasaje");
+    modelo.addColumn("Pasajero");
+    modelo.addColumn("DNI");
+    modelo.addColumn("Origen");
+    modelo.addColumn("Destino");
+    modelo.addColumn("Colectivo");
+    modelo.addColumn("Fecha Viaje");
+    modelo.addColumn("Hora Viaje");
+    modelo.addColumn("Asiento");
+    modelo.addColumn("Precio");
+    
+    // Llenar el modelo con los pasajes filtrados
+    for (Pasaje pasaje : pasajes) {
+        modelo.addRow(new Object[] {
+            pasaje.getId_Pasaje(),
+            pasaje.getPasajero().getNombre(),
+            pasaje.getPasajero().getDni(),
+            pasaje.getRuta().getOrigen(),
+            pasaje.getRuta().getDestino(),
+            pasaje.getColectivo().getModelo(),
+            pasaje.getFecha_Viaje(),
+            pasaje.getHora_Viaje(),
+            pasaje.getAsiento(),
+            pasaje.getPrecio()
+        });
+    }
+    
+    // Establecer el modelo en la tabla
+    jTable2.setModel(modelo);
+    }//GEN-LAST:event_jbFiltrarHorarioActionPerformed
 
 
     
