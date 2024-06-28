@@ -11,10 +11,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author IGNACIO
- */
+
 public class Ventas_View extends javax.swing.JInternalFrame {
 
     private List<Pasajero> listaPasajeros;
@@ -633,16 +630,16 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbFiltrarPasajeroActionPerformed
 
     private void jbFiltrarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltrarHorarioActionPerformed
-    // Obtener el horario seleccionado en jcbBuscarHorarios
+  
     String horarioSeleccionadoStr = (String) jcbBuscarHorarios.getSelectedItem();
     
-    // Convertir el horario seleccionado a LocalTime
+
     LocalTime horarioSeleccionado = LocalTime.parse(horarioSeleccionadoStr, DateTimeFormatter.ofPattern("HH:mm"));
     
-    // Filtrar los pasajes por el horario seleccionado usando el método de PasajeData
+   
     List<Pasaje> pasajes = pasajeData.listarPasajesPorHorario(horarioSeleccionado);
     
-    // Crear el modelo de tabla
+    
     DefaultTableModel modelo = new DefaultTableModel();
     modelo.addColumn("ID Pasaje");
     modelo.addColumn("Pasajero");
@@ -655,7 +652,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     modelo.addColumn("Asiento");
     modelo.addColumn("Precio");
     
-    // Llenar el modelo con los pasajes filtrados
+  
     for (Pasaje pasaje : pasajes) {
         modelo.addRow(new Object[] {
             pasaje.getId_Pasaje(),
@@ -671,7 +668,7 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         });
     }
     
-    // Establecer el modelo en la tabla
+    
     jTable2.setModel(modelo);
     }//GEN-LAST:event_jbFiltrarHorarioActionPerformed
 

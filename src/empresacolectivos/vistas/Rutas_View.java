@@ -200,7 +200,7 @@ public class Rutas_View extends javax.swing.JInternalFrame {
 
     if (!rutasEncontradas.isEmpty()) {
         DefaultTableModel modelo = (DefaultTableModel) jTRutasDisponibles.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevas rutas
+        modelo.setRowCount(0); 
 
         for (Ruta ruta : rutasEncontradas) {
             Object[] fila = {ruta.getOrigen(), ruta.getDestino()};
@@ -223,7 +223,7 @@ public class Rutas_View extends javax.swing.JInternalFrame {
         return;
     }
 
-    // Validar que destinoBusqueda contenga solo letras
+   
     if (!destinoBusqueda.matches("^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+$")) {
         JOptionPane.showMessageDialog(null, "El destino debe contener solo letras.");
         return;
@@ -233,7 +233,7 @@ public class Rutas_View extends javax.swing.JInternalFrame {
 
     if (!rutasEncontradas.isEmpty()) {
         DefaultTableModel modelo = (DefaultTableModel) jTRutasDisponibles.getModel();
-        modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevas rutas
+        modelo.setRowCount(0); 
 
         for (Ruta ruta : rutasEncontradas) {
             Object[] fila = {ruta.getOrigen(), ruta.getDestino()};
