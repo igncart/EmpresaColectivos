@@ -65,31 +65,28 @@ public class ColectivoData {
     }
     
     public void modificarColectivo(Colectivo colectivo){
-        String sql = "UPDATE colectivo SET matricula= ?, marca= ?, modelo= ?, capacidad= ? "
-                + " WHERE id_colectivo= ? ";
-        
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setString(1, colectivo.getMatricula());
-            ps.setString(2, colectivo.getMarca());
-            ps.setString(3, colectivo.getModelo());
-            ps.setInt(4, colectivo.getCapacidad());
-            //ps.setBoolean(5, colectivo.isEstado());
-            ps.setInt(5, colectivo.getId_Colectivo());
-            
-            int update = ps.executeUpdate();
-            
-            if(update == 1 ){
-                JOptionPane.showMessageDialog(null, "Colectivo Modificado");
-            }
-            
-        } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla Colectivo");
+    String sql = "UPDATE colectivo SET matricula= ?, marca= ?, modelo= ?, capacidad= ?, estado = ? WHERE id_colectivo= ?";
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, colectivo.getMatricula());
+        ps.setString(2, colectivo.getMarca());
+        ps.setString(3, colectivo.getModelo());
+        ps.setInt(4, colectivo.getCapacidad());
+        ps.setBoolean(5, colectivo.isEstado());
+        ps.setInt(6, colectivo.getId_Colectivo());
+
+        int update = ps.executeUpdate();
+
+        if(update == 1 ){
+            JOptionPane.showMessageDialog(null, "Colectivo Modificado");
         }
-        
-        
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la Tabla Colectivo");
     }
+}
     
     public List<Colectivo> listarColectivo(){
         String sql = "SELECT id_colectivo, matricula, marca, modelo, capacidad FROM colectivo WHERE estado = 1 ";
@@ -161,50 +158,39 @@ public class ColectivoData {
     return colectivo;
 }
     
-    public Colectivo buscarPorMatricula(String matricula){
-        
-    String sql = "SELECT id_colectivo, matricula, marca, modelo, capacidad "
-                     + "FROM colectivo "
-                     + "WHERE matricula = ? AND estado = 1";
-    
+ public Colectivo buscarPorMatricula(String matricula){
+    String sql = "SELECT id_colectivo, matricula, marca, modelo, capacidad, estado FROM colectivo WHERE matricula = ?";
+
     Colectivo colectivo = null;
-    
-   try {
-       
-       PreparedStatement ps = con.prepareStatement(sql);
-       
-       ps.setString(1, matricula);
-       ResultSet rs = ps.executeQuery();
-       
-       if (rs.next()) {
-           
-           colectivo = new Colectivo();
-           
-           colectivo.setId_Colectivo(rs.getInt("id_colectivo"));
-           colectivo.setMatricula(rs.getString("matricula"));
-           colectivo.setMarca(rs.getString("marca"));
-           colectivo.setModelo(rs.getString("modelo"));
-           colectivo.setCapacidad(rs.getInt("capacidad"));
-           colectivo.setEstado(true);
-           
-       } else {
-           
-           JOptionPane.showMessageDialog(null, "El colectivo que busca no existe.");
-       }
-       
+
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setString(1, matricula);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            colectivo = new Colectivo();
+            colectivo.setId_Colectivo(rs.getInt("id_colectivo"));
+            colectivo.setMatricula(rs.getString("matricula"));
+            colectivo.setMarca(rs.getString("marca"));
+            colectivo.setModelo(rs.getString("modelo"));
+            colectivo.setCapacidad(rs.getInt("capacidad"));
+            colectivo.setEstado(rs.getBoolean("estado"));
+        } else {
+            JOptionPane.showMessageDialog(null, "El colectivo que busca no existe.");
+        }
+
         ps.close();
         rs.close();
 
-   } catch (SQLException ex) {
-       
-       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla colectivo.");
-   }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla colectivo.");
+    }
 
     return colectivo;
-    }
-    
 }
     
-    
+} 
     
 

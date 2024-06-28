@@ -44,15 +44,14 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jBGuardarPasajero = new javax.swing.JButton();
         jLBuscarNombre = new javax.swing.JLabel();
         jLBuscarApellido = new javax.swing.JLabel();
-        jLBuscarDNI = new javax.swing.JLabel();
         jTBuscarNombre = new javax.swing.JTextField();
         jTBuscarApellido = new javax.swing.JTextField();
-        jTBuscarDni = new javax.swing.JTextField();
         jBBuscarPorNombre = new javax.swing.JButton();
         jBBuscarPorApellido = new javax.swing.JButton();
-        jBBuscarPorDniAction = new javax.swing.JButton();
         jBVisualizarTodosPasajeros = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jBBuscarPorDniAction = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(true);
@@ -137,12 +136,8 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
 
         jLBuscarApellido.setText("Buscar por apellido:");
         jPApellido.add(jLBuscarApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
-
-        jLBuscarDNI.setText("Buscar por D.N.I:");
-        jPApellido.add(jLBuscarDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
         jPApellido.add(jTBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 80, -1));
         jPApellido.add(jTBuscarApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 80, -1));
-        jPApellido.add(jTBuscarDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 80, -1));
 
         jBBuscarPorNombre.setBackground(new java.awt.Color(255, 255, 204));
         jBBuscarPorNombre.setText("Buscar");
@@ -162,15 +157,6 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         });
         jPApellido.add(jBBuscarPorApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
 
-        jBBuscarPorDniAction.setBackground(new java.awt.Color(255, 255, 204));
-        jBBuscarPorDniAction.setText("Buscar");
-        jBBuscarPorDniAction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBBuscarPorDniActionActionPerformed(evt);
-            }
-        });
-        jPApellido.add(jBBuscarPorDniAction, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
-
         jBVisualizarTodosPasajeros.setBackground(new java.awt.Color(255, 255, 204));
         jBVisualizarTodosPasajeros.setText("Mostrar todos los pasajeros");
         jBVisualizarTodosPasajeros.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +166,9 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         });
         jPApellido.add(jBVisualizarTodosPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 470, 30));
 
+        jBEliminar.setText("Eliminar Pasajero");
+        jPApellido.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+
         jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -188,22 +177,39 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
             }
         });
 
+        jBBuscarPorDniAction.setBackground(new java.awt.Color(255, 255, 204));
+        jBBuscarPorDniAction.setText("Buscar");
+        jBBuscarPorDniAction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarPorDniActionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBBuscarPorDniAction))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(209, 209, 209)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jBBuscarPorDniAction)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -277,7 +283,7 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarPorApellidoActionPerformed
 
     private void jBBuscarPorDniActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorDniActionActionPerformed
-        String dni = jTBuscarDni.getText().trim();
+        String dni = jTDNI.getText().trim();
         if (dni.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese un DNI para buscar.");
             return;
@@ -416,12 +422,12 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBBuscarPorApellido;
     private javax.swing.JButton jBBuscarPorDniAction;
     private javax.swing.JButton jBBuscarPorNombre;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardarPasajero;
     private javax.swing.JButton jBVisualizarTodosPasajeros;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckEstado;
     private javax.swing.JLabel jLBuscarApellido;
-    private javax.swing.JLabel jLBuscarDNI;
     private javax.swing.JLabel jLBuscarNombre;
     private javax.swing.JLabel jLCorreo;
     private javax.swing.JLabel jLDNI;
@@ -435,7 +441,6 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTApellido;
     private javax.swing.JTextField jTBuscarApellido;
-    private javax.swing.JTextField jTBuscarDni;
     private javax.swing.JTextField jTBuscarNombre;
     private javax.swing.JTextField jTCelular;
     private javax.swing.JTextField jTCorreo;

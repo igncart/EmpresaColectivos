@@ -40,7 +40,6 @@ public class ColectivoView extends javax.swing.JInternalFrame {
         jsCapacidad = new javax.swing.JSpinner();
         jrEstado = new javax.swing.JRadioButton();
         jbLimpiar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -72,7 +71,7 @@ public class ColectivoView extends javax.swing.JInternalFrame {
         jLabel6.setText("Estado:");
         jDesktopPane1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
-        jbGuardar.setText("Guardar");
+        jbGuardar.setText("Guardar/Modificar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -118,19 +117,15 @@ public class ColectivoView extends javax.swing.JInternalFrame {
         });
         jDesktopPane1.add(jbLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 90, 40));
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 204));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 204));
-        jDesktopPane1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 550, 20));
-
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 510, 490));
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 510, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
        
-        String matricula = jtMatricula.getText().toUpperCase();
-        if(matricula.isEmpty()){
+     String matricula = jtMatricula.getText().toUpperCase();
+    if(matricula.isEmpty()){
         JOptionPane.showMessageDialog(this, "DEBE AGREGAR MATRICULA");
         return;
     }
@@ -151,24 +146,21 @@ public class ColectivoView extends javax.swing.JInternalFrame {
         coleActual.setMarca(marca);
         coleActual.setModelo(modelo);
         coleActual.setCapacidad(capacidad);
+        coleActual.setEstado(estado);
         coleData.modificarColectivo(coleActual);
-    
-}
-            
-        
+     }
+         limpiarCampos();      
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        // TODO add your handling code here:
-        String matricula= jtMatricula.getText();
-        coleActual = coleData.buscarPorMatricula(matricula);
-        if(coleActual != null){
-            jtMarca.setText(coleActual.getMarca());
-            jtModelo.setText(coleActual.getModelo());
-            jsCapacidad.setValue(coleActual.getCapacidad());
-            jrEstado.setSelected(coleActual.isEstado());
-            
-        }
+    String matricula = jtMatricula.getText();
+    coleActual = coleData.buscarPorMatricula(matricula);
+    if(coleActual != null){
+        jtMarca.setText(coleActual.getMarca());
+        jtModelo.setText(coleActual.getModelo());
+        jsCapacidad.setValue(coleActual.getCapacidad());
+        jrEstado.setSelected(coleActual.isEstado());
+    }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
@@ -207,7 +199,6 @@ public class ColectivoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
