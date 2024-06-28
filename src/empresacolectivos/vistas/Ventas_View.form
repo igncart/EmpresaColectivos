@@ -446,6 +446,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Filtrar por ruta"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbFiltrarRutaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbBuscarHorarios">
           <Properties>
@@ -461,6 +464,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Filtrar por pasajero"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbFiltrarPasajeroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbFiltrarHorario">
           <Properties>

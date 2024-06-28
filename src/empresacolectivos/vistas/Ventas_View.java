@@ -270,8 +270,18 @@ public class Ventas_View extends javax.swing.JInternalFrame {
         });
 
         jbFiltrarRuta.setText("Filtrar por ruta");
+        jbFiltrarRuta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFiltrarRutaActionPerformed(evt);
+            }
+        });
 
         jbFiltrarPasajero.setText("Filtrar por pasajero");
+        jbFiltrarPasajero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbFiltrarPasajeroActionPerformed(evt);
+            }
+        });
 
         jbFiltrarHorario.setText("Filtrar por horario");
 
@@ -516,21 +526,105 @@ public class Ventas_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbMostrarPasajesActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-            // Obtener el ID del pasaje a eliminar (previamente buscado)
+            
     int id = Integer.parseInt(jtxBuscarXid.getText().trim());
     
-    // Confirmar la eliminación con un mensaje de diálogo
+   
     int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea eliminar el pasaje?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
     
     if (confirmacion == JOptionPane.YES_OPTION) {
-        // Eliminar el pasaje de la base de datos
+        
         pasajeData.eliminarPasaje(id);
         
-        // Limpiar campos y actualizar interfaz
         limpiarCampos();
-        jbMostrarPasajesActionPerformed(evt); // Actualizar la tabla de pasajes
+        jbMostrarPasajesActionPerformed(evt);
     }
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbFiltrarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltrarRutaActionPerformed
+
+        Ruta rutaSeleccionada = (Ruta) jcbBuscarRutas.getSelectedItem();
+        
+        if (rutaSeleccionada != null) {
+
+            List<Pasaje> pasajes = pasajeData.listarPasajesPorRuta(rutaSeleccionada);
+            
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("ID Pasaje");
+            modelo.addColumn("Pasajero");
+            modelo.addColumn("DNI");
+            modelo.addColumn("Origen");
+            modelo.addColumn("Destino");
+            modelo.addColumn("Colectivo");
+            modelo.addColumn("Fecha Viaje");
+            modelo.addColumn("Hora Viaje");
+            modelo.addColumn("Asiento");
+            modelo.addColumn("Precio");
+            
+            for (Pasaje pasaje : pasajes) {
+                modelo.addRow(new Object[] {
+                    pasaje.getId_Pasaje(),
+                    pasaje.getPasajero().getNombre(),
+                    pasaje.getPasajero().getDni(),
+                    pasaje.getRuta().getOrigen(),
+                    pasaje.getRuta().getDestino(),
+                    pasaje.getColectivo().getModelo(),
+                    pasaje.getFecha_Viaje(),
+                    pasaje.getHora_Viaje(),
+                    pasaje.getAsiento(),
+                    pasaje.getPrecio()
+                });
+            }
+            
+            jTable2.setModel(modelo);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbFiltrarRutaActionPerformed
+
+    private void jbFiltrarPasajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFiltrarPasajeroActionPerformed
+    // Obtener el pasajero seleccionado del JComboBox jcbBuscarPasajeros
+        Pasajero pasajeroSeleccionado = (Pasajero) jcbBuscarPasajeros.getSelectedItem();
+        
+        if (pasajeroSeleccionado != null) {
+            // Llamar al método listarPasajesPorPasajero de pasajeData para obtener los pasajes del pasajero seleccionado
+            List<Pasaje> pasajes = pasajeData.listarPasajesPorPasajero(pasajeroSeleccionado);
+            
+            // Crear el modelo de la tabla jTable2 para mostrar los pasajes filtrados
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("ID Pasaje");
+            modelo.addColumn("Pasajero");
+            modelo.addColumn("DNI");
+            modelo.addColumn("Origen");
+            modelo.addColumn("Destino");
+            modelo.addColumn("Colectivo");
+            modelo.addColumn("Fecha Viaje");
+            modelo.addColumn("Hora Viaje");
+            modelo.addColumn("Asiento");
+            modelo.addColumn("Precio");
+            
+            // Llenar el modelo con los pasajes obtenidos
+            for (Pasaje pasaje : pasajes) {
+                modelo.addRow(new Object[] {
+                    pasaje.getId_Pasaje(),
+                    pasaje.getPasajero().getNombre(),
+                    pasaje.getPasajero().getDni(),
+                    pasaje.getRuta().getOrigen(),
+                    pasaje.getRuta().getDestino(),
+                    pasaje.getColectivo().getModelo(),
+                    pasaje.getFecha_Viaje(),
+                    pasaje.getHora_Viaje(),
+                    pasaje.getAsiento(),
+                    pasaje.getPrecio()
+                });
+            }
+            
+            // Asignar el modelo a jTable2 para mostrar los pasajes filtrados
+            jTable2.setModel(modelo);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un pasajero.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbFiltrarPasajeroActionPerformed
 
 
     
