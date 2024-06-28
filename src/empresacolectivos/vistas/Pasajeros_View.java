@@ -252,13 +252,13 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         modeloTabla.setRowCount(0);
         for (Pasajero pasajero : pasajeros) {
             modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
+               
                 pasajero.getNombre(),
                 pasajero.getApellido(),
                 pasajero.getDni(),
                 pasajero.getCorreo(),
                 pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
+                
             });
         }
     } else {
@@ -285,13 +285,13 @@ String apellido = jTBuscarApellido.getText().trim();
         modeloTabla.setRowCount(0);
         for (Pasajero pasajero : pasajeros) {
             modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
+                
                 pasajero.getNombre(),
                 pasajero.getApellido(),
                 pasajero.getDni(),
                 pasajero.getCorreo(),
                 pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
+                
             });
         }
     } else {
@@ -317,13 +317,13 @@ String apellido = jTBuscarApellido.getText().trim();
     if (pasajero != null) {
         modeloTabla.setRowCount(0);
         modeloTabla.addRow(new Object[]{
-            pasajero.getId_Pasajero(),
+          
             pasajero.getNombre(),
             pasajero.getApellido(),
             pasajero.getDni(),
             pasajero.getCorreo(),
             pasajero.getTelefono(),
-            pasajero.isEstado() ? "Activo" : "Inactivo"
+            
         });
         rellenarCamposPasajero(pasajero);
     } else {
@@ -483,13 +483,13 @@ String dni = jTDNI.getText().trim();
 
     private void inicializarTabla() {
         modeloTabla = new DefaultTableModel();
-        modeloTabla.addColumn("ID");
+
         modeloTabla.addColumn("Nombre");
         modeloTabla.addColumn("Apellido");
         modeloTabla.addColumn("DNI");
         modeloTabla.addColumn("Correo");
         modeloTabla.addColumn("Celular");
-        modeloTabla.addColumn("Estado");
+        
 
         jTListaPasajeros.setModel(modeloTabla);
     }
@@ -499,13 +499,13 @@ String dni = jTDNI.getText().trim();
 
         for (Pasajero pasajero : pasajeros) {
             modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
+               
                 pasajero.getNombre(),
                 pasajero.getApellido(),
                 pasajero.getDni(),
                 pasajero.getCorreo(),
                 pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
+                
             });
         }
     }

@@ -19,13 +19,22 @@ public class Horarios_View extends javax.swing.JInternalFrame {
     private RutaData rutaData;
     private HorarioData horarioData;
     
-    private void cargarHorarios() {
-        jCBuscarHorario.removeAllItems();
-        for (int i = 0; i < 24; i++) {
-            String hora = String.format("%02d:00", i);
-            jCBuscarHorario.addItem(hora);
+private void cargarHorarios() {
+    jCBuscarHorario.removeAllItems();
+    
+    
+    for (int hora = 0; hora < 24; hora++) {
+        
+        String horaCompleta = String.format("%02d:00", hora);
+        jCBuscarHorario.addItem(horaCompleta);
+        
+        
+        for (int minuto = 15; minuto <= 45; minuto += 15) {
+            String horaIntervalo = String.format("%02d:%02d", hora, minuto);
+            jCBuscarHorario.addItem(horaIntervalo);
         }
     }
+}
 
     public Horarios_View() {
         initComponents();
@@ -118,10 +127,10 @@ public class Horarios_View extends javax.swing.JInternalFrame {
 
         jLHoraRuta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLHoraRuta.setText("Añada un horario de ruta:");
-        jDesktopPane1.add(jLHoraRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, 25));
+        jDesktopPane1.add(jLHoraRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, 25));
 
         jCRuta.setBorder(null);
-        jDesktopPane1.add(jCRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 180, -1));
+        jDesktopPane1.add(jCRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 180, -1));
 
         jLHasta.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLHasta.setText("Hasta");
@@ -185,7 +194,7 @@ public class Horarios_View extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,23 +216,45 @@ public class Horarios_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBAñadirActionPerformed
 
     private void jBBuscarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHorarioActionPerformed
-        String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
-        Horario horarioEncontrado = horarioData.buscarHorarioPorSalida(LocalTime.parse(horaSeleccionada));
-        if (horarioEncontrado != null) {
-            JOptionPane.showMessageDialog(this, "El horario de salida existe.");
-        } else {
+    String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
+    List<Horario> horariosEncontrados = horarioData.buscarHorariosPorSalida(LocalTime.parse(horaSeleccionada));
+    
+    DefaultTableModel model = (DefaultTableModel) jTMostrarRutasYHorarios.getModel();
+    model.setRowCount(0); 
+    
+    if (!horariosEncontrados.isEmpty()) {
+        for (Horario horario : horariosEncontrados) {
+            Object[] row = {
+                horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
+                horario.getHora_Salida(),
+                horario.getHora_Llegada()
+            };
+            model.addRow(row);
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontraron horarios para la hora seleccionada.");
+    }
     }//GEN-LAST:event_jBBuscarHorarioActionPerformed
 
     private void jBBuscarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarRutaActionPerformed
-        Ruta rutaSeleccionada = (Ruta) jCBuscarRuta.getSelectedItem();
-        Horario horarioEncontrado = horarioData.buscarHorarioPorRuta(rutaSeleccionada);
-        if (horarioEncontrado != null) {
-            JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " tiene los siguientes horarios: \n"
-                + horarioEncontrado.getHora_Salida() + " - " + horarioEncontrado.getHora_Llegada());
-        } else {
-            JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
+    Ruta rutaSeleccionada = (Ruta) jCBuscarRuta.getSelectedItem();
+    List<Horario> horariosEncontrados = horarioData.buscarHorariosPorRuta(rutaSeleccionada);
+    
+    DefaultTableModel model = (DefaultTableModel) jTMostrarRutasYHorarios.getModel();
+    model.setRowCount(0); 
+    
+    if (!horariosEncontrados.isEmpty()) {
+        for (Horario horario : horariosEncontrados) {
+            Object[] row = {
+                horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
+                horario.getHora_Salida(),
+                horario.getHora_Llegada()
+            };
+            model.addRow(row);
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
+    }
     }//GEN-LAST:event_jBBuscarRutaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -248,13 +279,21 @@ public class Horarios_View extends javax.swing.JInternalFrame {
     jTMostrarRutasYHorarios.setModel(model);
 }
     
-    private void cargarHorariosFijos() {
-       for (int i = 0; i < 24; i++) {
-        String hora = String.format("%02d:00", i);
-        jCHoraInicio.addItem(hora);
-        jCHoraFinal.addItem(hora);
-       }
+private void cargarHorariosFijos() {
+    for (int hora = 0; hora < 24; hora++) {
+        
+        String horaCompleta = String.format("%02d:00", hora);
+        jCHoraInicio.addItem(horaCompleta);
+        jCHoraFinal.addItem(horaCompleta);
+        
+        
+        for (int minuto = 15; minuto <= 45; minuto += 15) {
+            String horaIntervalo = String.format("%02d:%02d", hora, minuto);
+            jCHoraInicio.addItem(horaIntervalo);
+            jCHoraFinal.addItem(horaIntervalo);
+        }
     }
+}
     
 
     

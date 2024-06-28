@@ -189,88 +189,73 @@ public Horario buscarHorario(int id) {
 }
 
 
-public Horario buscarHorarioPorRuta(Ruta ruta) {
+public List<Horario> buscarHorariosPorRuta(Ruta ruta) {
+    List<Horario> horarios = new ArrayList<>();
+    String sql = "SELECT id_horario, hora_salida, hora_llegada "
+                 + "FROM horario "
+                 + "WHERE id_ruta = ? AND estado = 1";
     
-    String sql = "SELECT id_horario, id_ruta, hora_salida, hora_llegada "
-                     + "FROM horario "
-                     + "WHERE id_ruta = ? AND estado = 1";
+    try (PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setInt(1, ruta.getId_Ruta());
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Horario horario = new Horario();
+                horario.setId_Horario(rs.getInt("id_horario"));
+                horario.setRuta(ruta);
+                horario.setHora_Salida(rs.getTime("hora_salida").toLocalTime());
+                horario.setHora_Llegada(rs.getTime("hora_llegada").toLocalTime());
+                horario.setEstado(true);
+                horarios.add(horario);
+            }
+        }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla horario: ");
+    }
     
-    Horario horario = null;
+    if (horarios.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No se encontraron horarios para la ruta seleccionada.");
+    }
     
-   try {
-       
-       PreparedStatement ps = con.prepareStatement(sql);
-       
-       ps.setObject(1, ruta.getId_Ruta());
-       ResultSet rs = ps.executeQuery();
-       
-       if (rs.next()) {
-           
-           horario = new Horario();
-           
-           horario.setId_Horario(rs.getInt("id_horario"));
-           horario.setRuta(ruta);
-           horario.setHora_Salida(rs.getTime("hora_salida").toLocalTime());
-           horario.setHora_Llegada(rs.getTime("hora_llegada").toLocalTime());
-           horario.setEstado(true);
-           
-       } else {
-           
-           JOptionPane.showMessageDialog(null, "El horario que busca no existe.");
-       }
-       
-        ps.close();
-        rs.close();
-
-   } catch (SQLException ex) {
-       
-       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla horario.");
-   }
-
-    return horario;
+    return horarios;
 }
 
 
-public Horario buscarHorarioPorSalida(LocalTime hora_salida) {
-    
+public List<Horario> buscarHorariosPorSalida(LocalTime hora_salida) {
     String sql = "SELECT id_horario, id_ruta, hora_salida, hora_llegada "
-                     + "FROM horario "
-                     + "WHERE hora_salida = ? AND estado = 1";
+                 + "FROM horario "
+                 + "WHERE hora_salida = ? AND estado = 1";
     
-    Horario horario = null;
+    List<Horario> horarios = new ArrayList<>();
     
-   try {
-       
-       PreparedStatement ps = con.prepareStatement(sql);
-       
-       ps.setTime(1, Time.valueOf(hora_salida));
-       ResultSet rs = ps.executeQuery();
-       
-       if (rs.next()) {
-           
-           horario = new Horario();
-           
-           horario.setId_Horario(rs.getInt("id_horario"));
-           Ruta ruta = rd.buscarRuta(rs.getInt("id_ruta"));
-           horario.setRuta(ruta);
-           horario.setHora_Salida(hora_salida);
-           horario.setHora_Llegada(rs.getTime("hora_llegada").toLocalTime());
-           horario.setEstado(true);
-           
-       } else {
-           
-           JOptionPane.showMessageDialog(null, "El horario que busca no existe.");
-       }
-       
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setTime(1, Time.valueOf(hora_salida));
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            Horario horario = new Horario();
+            horario.setId_Horario(rs.getInt("id_horario"));
+            Ruta ruta = rd.buscarRuta(rs.getInt("id_ruta"));
+            horario.setRuta(ruta);
+            horario.setHora_Salida(hora_salida);
+            horario.setHora_Llegada(rs.getTime("hora_llegada").toLocalTime());
+            horario.setEstado(true);
+            
+            horarios.add(horario);
+        }
+        
         ps.close();
         rs.close();
-
-   } catch (SQLException ex) {
-       
-       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla horario.");
-   }
-
-    return horario;
+        
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla horario.");
+    }
+    
+    if (horarios.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No se encontraron horarios para la hora seleccionada.");
+    }
+    
+    return horarios;
 }
 
 
