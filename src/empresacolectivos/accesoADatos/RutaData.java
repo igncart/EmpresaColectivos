@@ -140,87 +140,71 @@ public List<Ruta> listarRutas() {
 }
 
 
-public Ruta buscarRutaPorOrigen(String origen) {
+public List<Ruta> buscarRutasPorOrigen(String origen) {
+    List<Ruta> rutas = new ArrayList<>();
     
     String sql = "SELECT id_ruta, origen, destino, duracion_estimada "
-                     + "FROM ruta "
-                     + "WHERE origen = ? AND estado = 1";
+                 + "FROM ruta "
+                 + "WHERE origen = ? AND estado = 1";
     
-    Ruta ruta = null;
-    
-   try {
-       
-       PreparedStatement ps = con.prepareStatement(sql);
-       
-       ps.setString(1, origen);
-       ResultSet rs = ps.executeQuery();
-       
-       if (rs.next()) {
-           
-           ruta = new Ruta();
-           
-           ruta.setId_Ruta(rs.getInt("id_ruta"));
-           ruta.setOrigen(origen);
-           ruta.setDestino(rs.getString("destino"));
-           ruta.setDuracion_Estimada(rs.getTime("duracion_estimada").toLocalTime());
-           ruta.setEstado(true);
-           
-       } else {
-           
-           JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
-       }
-       
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, origen);
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            Ruta ruta = new Ruta();
+            ruta.setId_Ruta(rs.getInt("id_ruta"));
+            ruta.setOrigen(origen);
+            ruta.setDestino(rs.getString("destino"));
+            ruta.setDuracion_Estimada(rs.getTime("duracion_estimada").toLocalTime());
+            ruta.setEstado(true);
+            
+            rutas.add(ruta);
+        }
+        
         ps.close();
         rs.close();
 
-   } catch (SQLException ex) {
-       
-       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ruta.");
-   }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ruta.");
+    }
 
-    return ruta;
+    return rutas;
 }
 
 
-public Ruta buscarRutaPorDestino(String destino) {
+public List<Ruta> buscarRutasPorDestino(String destino) {
+    List<Ruta> rutas = new ArrayList<>();
     
     String sql = "SELECT id_ruta, origen, destino, duracion_estimada "
-                     + "FROM ruta "
-                     + "WHERE destino = ? AND estado = 1";
+                 + "FROM ruta "
+                 + "WHERE destino = ? AND estado = 1";
     
-    Ruta ruta = null;
-    
-   try {
-       
-       PreparedStatement ps = con.prepareStatement(sql);
-       
-       ps.setString(1, destino);
-       ResultSet rs = ps.executeQuery();
-       
-       if (rs.next()) {
-           
-           ruta = new Ruta();
-           
-           ruta.setId_Ruta(rs.getInt("id_ruta"));
-           ruta.setOrigen(rs.getString("origen"));
-           ruta.setDestino(destino);
-           ruta.setDuracion_Estimada(rs.getTime("duracion_estimada").toLocalTime());
-           ruta.setEstado(true);
-           
-       } else {
-           
-           JOptionPane.showMessageDialog(null, "La ruta que busca no existe.");
-       }
-       
+    try {
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, destino);
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            Ruta ruta = new Ruta();
+            ruta.setId_Ruta(rs.getInt("id_ruta"));
+            ruta.setOrigen(rs.getString("origen"));
+            ruta.setDestino(destino);
+            ruta.setDuracion_Estimada(rs.getTime("duracion_estimada").toLocalTime());
+            ruta.setEstado(true);
+            
+            rutas.add(ruta);
+        }
+        
         ps.close();
         rs.close();
 
-   } catch (SQLException ex) {
-       
-       JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ruta.");
-   }
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ruta.");
+    }
 
-    return ruta;
+    return rutas;
 }
 
 public Ruta buscarRuta(int id) {

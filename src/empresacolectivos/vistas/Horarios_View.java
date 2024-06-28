@@ -212,7 +212,7 @@ private void cargarHorarios() {
 
         Horario horario = new Horario(rutaSeleccionada, horaInicio, horaFinal, true);
         horarioData.registrarHorario(horario);
-        mostrarHorariosEnTabla(horarioData.listarHorarios());
+       mostrarHorariosEnTabla(horarioData.listarHorarios());
     }//GEN-LAST:event_jBAñadirActionPerformed
 
     private void jBBuscarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHorarioActionPerformed
@@ -261,7 +261,7 @@ private void cargarHorarios() {
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-        private void mostrarHorariosEnTabla(List<Horario> horarios) {
+   private void mostrarHorariosEnTabla(List<Horario> horarios) {
     DefaultTableModel model = new DefaultTableModel();
     model.addColumn("Ruta");
     model.addColumn("Hora de salida");
@@ -277,7 +277,7 @@ private void cargarHorarios() {
     }
 
     jTMostrarRutasYHorarios.setModel(model);
-}
+} 
     
 private void cargarHorariosFijos() {
     for (int hora = 0; hora < 24; hora++) {
