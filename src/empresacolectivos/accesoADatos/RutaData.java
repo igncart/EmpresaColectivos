@@ -102,23 +102,17 @@ public void modificarRuta(Ruta ruta) {
 }
 
 public List<Ruta> listarRutas() {
-    
     String sql = "SELECT id_ruta, origen, destino, duracion_estimada "
-                     + "FROM ruta "
-                     + "WHERE estado = 1";
+               + "FROM ruta "
+               + "WHERE estado = 1";
     
-    ArrayList<Ruta> rutas = new ArrayList<>();
+    List<Ruta> rutas = new ArrayList<>();
     
-    try {
-        
-        PreparedStatement ps = con.prepareStatement(sql);
-        
-        ResultSet rs = ps.executeQuery();
+    try (PreparedStatement ps = con.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
         
         while (rs.next()) {
-            
             Ruta ruta = new Ruta();
-            
             ruta.setId_Ruta(rs.getInt("id_ruta"));
             ruta.setOrigen(rs.getString("origen"));
             ruta.setDestino(rs.getString("destino"));
@@ -126,16 +120,12 @@ public List<Ruta> listarRutas() {
             ruta.setEstado(true);
             
             rutas.add(ruta);
-  
         }
-        ps.close();
-        rs.close();
-         
-    } catch (SQLException ex) {
         
+    } catch (SQLException ex) {
         JOptionPane.showMessageDialog(null, "Error al acceder a la tabla ruta");
     }
-
+    
     return rutas;
 }
 

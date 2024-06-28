@@ -39,29 +39,29 @@ private void cargarHorarios() {
     public Horarios_View() {
         initComponents();
         rutaData = new RutaData();
-    horarioData = new HorarioData();
-    cargarHorariosFijos();
-    mostrarHorariosEnTabla(horarioData.listarHorarios());
-    cargarHorarios();
-    cargarComboBoxRutas();
-    cargarComboBusquedaRutas();
+        horarioData = new HorarioData();
+        cargarHorariosFijos();
+        mostrarHorariosEnTabla(horarioData.listarHorarios());
+        cargarHorarios();
+        cargarComboBoxRutas();
+        cargarComboBusquedaRutas();
     }
 
     private void cargarComboBoxRutas() {
-    List <Ruta> rutas = rutaData.listarRutas();
-    jCRuta.removeAllItems();
-    for (Ruta ruta : rutas) {
-        jCRuta.addItem(ruta);
+        List<Ruta> rutas = rutaData.listarRutas();
+        jCRuta.removeAllItems();
+        for (Ruta ruta : rutas) {
+            jCRuta.addItem(ruta);
+        }
     }
-}
     
-    private void cargarComboBusquedaRutas() {
-    List<Ruta> rutas = rutaData.listarRutas();
-    jCBuscarRuta.removeAllItems();
-    for (Ruta ruta : rutas) {
-        jCBuscarRuta.addItem(ruta); 
+  private void cargarComboBusquedaRutas() {
+        List<Ruta> rutas = rutaData.listarRutas();
+        jCBuscarRuta.removeAllItems();
+        for (Ruta ruta : rutas) {
+            jCBuscarRuta.addItem(ruta);
+        }
     }
-}
 
 
     @SuppressWarnings("unchecked")
@@ -206,55 +206,55 @@ private void cargarHorarios() {
         LocalTime horaFinal = LocalTime.parse((String) jCHoraFinal.getSelectedItem());
 
         if (horaInicio.equals(horaFinal)) {
-            JOptionPane.showMessageDialog(null, "Nosotros no ofrecemos servicio de teletransporte. El horario de salida y llegada no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El horario de salida y llegada no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         Horario horario = new Horario(rutaSeleccionada, horaInicio, horaFinal, true);
         horarioData.registrarHorario(horario);
-       mostrarHorariosEnTabla(horarioData.listarHorarios());
+        mostrarHorariosEnTabla(horarioData.listarHorarios());
     }//GEN-LAST:event_jBAñadirActionPerformed
 
     private void jBBuscarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarHorarioActionPerformed
-    String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
-    List<Horario> horariosEncontrados = horarioData.buscarHorariosPorSalida(LocalTime.parse(horaSeleccionada));
-    
-    DefaultTableModel model = (DefaultTableModel) jTMostrarRutasYHorarios.getModel();
-    model.setRowCount(0); 
-    
-    if (!horariosEncontrados.isEmpty()) {
-        for (Horario horario : horariosEncontrados) {
-            Object[] row = {
-                horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
-                horario.getHora_Salida(),
-                horario.getHora_Llegada()
-            };
-            model.addRow(row);
+      String horaSeleccionada = (String) jCBuscarHorario.getSelectedItem();
+        List<Horario> horariosEncontrados = horarioData.buscarHorariosPorSalida(LocalTime.parse(horaSeleccionada));
+
+        DefaultTableModel model = (DefaultTableModel) jTMostrarRutasYHorarios.getModel();
+        model.setRowCount(0);
+
+        if (!horariosEncontrados.isEmpty()) {
+            for (Horario horario : horariosEncontrados) {
+                Object[] row = {
+                    horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
+                    horario.getHora_Salida(),
+                    horario.getHora_Llegada()
+                };
+                model.addRow(row);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encontraron horarios para la hora seleccionada.");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "No se encontraron horarios para la hora seleccionada.");
-    }
     }//GEN-LAST:event_jBBuscarHorarioActionPerformed
 
     private void jBBuscarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarRutaActionPerformed
     Ruta rutaSeleccionada = (Ruta) jCBuscarRuta.getSelectedItem();
-    List<Horario> horariosEncontrados = horarioData.buscarHorariosPorRuta(rutaSeleccionada);
-    
-    DefaultTableModel model = (DefaultTableModel) jTMostrarRutasYHorarios.getModel();
-    model.setRowCount(0); 
-    
-    if (!horariosEncontrados.isEmpty()) {
-        for (Horario horario : horariosEncontrados) {
-            Object[] row = {
-                horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
-                horario.getHora_Salida(),
-                horario.getHora_Llegada()
-            };
-            model.addRow(row);
+        List<Horario> horariosEncontrados = horarioData.buscarHorariosPorRuta(rutaSeleccionada);
+
+        DefaultTableModel model = (DefaultTableModel) jTMostrarRutasYHorarios.getModel();
+        model.setRowCount(0);
+
+        if (!horariosEncontrados.isEmpty()) {
+            for (Horario horario : horariosEncontrados) {
+                Object[] row = {
+                    horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
+                    horario.getHora_Salida(),
+                    horario.getHora_Llegada()
+                };
+                model.addRow(row);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "La ruta " + rutaSeleccionada + " no tiene horarios asociados.");
-    }
     }//GEN-LAST:event_jBBuscarRutaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -262,38 +262,36 @@ private void cargarHorarios() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
    private void mostrarHorariosEnTabla(List<Horario> horarios) {
-    DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("Ruta");
-    model.addColumn("Hora de salida");
-    model.addColumn("Hora de llegada");
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Ruta");
+        model.addColumn("Hora de salida");
+        model.addColumn("Hora de llegada");
 
-    for (Horario horario : horarios) {
-        Object[] row = {
-            horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
-            horario.getHora_Salida(),
-            horario.getHora_Llegada()
-        };
-        model.addRow(row);
+        for (Horario horario : horarios) {
+            Object[] row = {
+                horario.getRuta().getOrigen() + " - " + horario.getRuta().getDestino(),
+                horario.getHora_Salida(),
+                horario.getHora_Llegada()
+            };
+            model.addRow(row);
+        }
+
+        jTMostrarRutasYHorarios.setModel(model);
     }
 
-    jTMostrarRutasYHorarios.setModel(model);
-} 
-    
-private void cargarHorariosFijos() {
-    for (int hora = 0; hora < 24; hora++) {
-        
-        String horaCompleta = String.format("%02d:00", hora);
-        jCHoraInicio.addItem(horaCompleta);
-        jCHoraFinal.addItem(horaCompleta);
-        
-        
-        for (int minuto = 15; minuto <= 45; minuto += 15) {
-            String horaIntervalo = String.format("%02d:%02d", hora, minuto);
-            jCHoraInicio.addItem(horaIntervalo);
-            jCHoraFinal.addItem(horaIntervalo);
+    private void cargarHorariosFijos() {
+        for (int hora = 0; hora < 24; hora++) {
+            String horaCompleta = String.format("%02d:00", hora);
+            jCHoraInicio.addItem(horaCompleta);
+            jCHoraFinal.addItem(horaCompleta);
+
+            for (int minuto = 15; minuto <= 45; minuto += 15) {
+                String horaIntervalo = String.format("%02d:%02d", hora, minuto);
+                jCHoraInicio.addItem(horaIntervalo);
+                jCHoraFinal.addItem(horaIntervalo);
+            }
         }
     }
-}
     
 
     
