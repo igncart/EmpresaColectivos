@@ -89,13 +89,13 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jPApellido.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         jTNombre.setBorder(null);
-        jPApellido.add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 80, -1));
+        jPApellido.add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 110, -1));
 
         jLabel1.setText("Ingrese el apellido");
-        jPApellido.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        jPApellido.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jTApellido.setBorder(null);
-        jPApellido.add(jTApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 80, -1));
+        jPApellido.add(jTApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 110, -1));
 
         jLDNI.setText("Ingrese DNI");
         jPApellido.add(jLDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
@@ -104,10 +104,10 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jPApellido.add(jTDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 65, 80, 20));
 
         jLCorreo.setText("Ingrese un correo");
-        jPApellido.add(jLCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPApellido.add(jLCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jTCorreo.setBorder(null);
-        jPApellido.add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 80, -1));
+        jPApellido.add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 110, -1));
 
         jLabel2.setText("Ingrese su celular");
         jPApellido.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
@@ -383,7 +383,12 @@ String dni = jTDNI.getText().trim();
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-         // Obtener los datos actuales del pasajero desde los campos
+     
+ 
+ 
+ Pasajero pasajeroActual = pasajeroData.buscarPasajeroPorDni(jTDNI.getText());
+ int id = pasajeroActual.getId_Pasajero();
+         
     String nombre = jTNombre.getText();
     String apellido = jTApellido.getText();
     String dni = jTDNI.getText();
@@ -391,19 +396,20 @@ String dni = jTDNI.getText().trim();
     String telefono = jTCelular.getText();
     boolean estado = jCheckEstado.isSelected();
 
-    // Validar que el DNI sea numérico y válido
+
     if (!dni.matches("\\d{1,10}")) {
         JOptionPane.showMessageDialog(this, "El DNI debe contener solo números y tener máximo 10 dígitos.");
         return;
     }
+    
+    
 
-    // Crear un objeto Pasajero con los datos actuales
-    Pasajero pasajero = new Pasajero(nombre, apellido, dni, correo, telefono, estado);
+    Pasajero pasajero = new Pasajero(id, nombre, apellido, dni, correo, telefono, estado);
 
-    // Modificar el pasajero utilizando el método de PasajeroData
+ 
     pasajeroData.modificarPasajero(pasajero);
 
-    // Limpiar los campos después de la modificación
+
     limpiarCampos();
     limpiarTabla();
     cargarPasajeros();
