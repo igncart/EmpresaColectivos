@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
 
 public class Pasajeros_View extends javax.swing.JInternalFrame {
-
+      
       private DefaultTableModel modeloTabla;
       private PasajeroData pasajeroData;
     
@@ -50,6 +50,7 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jBBuscarPorApellido = new javax.swing.JButton();
         jBVisualizarTodosPasajeros = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jBBuscarPorDniAction = new javax.swing.JButton();
 
@@ -100,7 +101,7 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jPApellido.add(jLDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
         jTDNI.setBorder(null);
-        jPApellido.add(jTDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 80, -1));
+        jPApellido.add(jTDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 65, 80, 20));
 
         jLCorreo.setText("Ingrese un correo");
         jPApellido.add(jLCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
@@ -129,7 +130,7 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
                 jBGuardarPasajeroActionPerformed(evt);
             }
         });
-        jPApellido.add(jBGuardarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 80, -1));
+        jPApellido.add(jBGuardarPasajero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 80, -1));
 
         jLBuscarNombre.setText("Buscar por nombre:");
         jPApellido.add(jLBuscarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
@@ -167,7 +168,20 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
         jPApellido.add(jBVisualizarTodosPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 470, 30));
 
         jBEliminar.setText("Eliminar Pasajero");
-        jPApellido.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+        jPApellido.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
+
+        jBModificar.setText("Modificar");
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
+        jPApellido.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setText("Salir");
@@ -221,21 +235,22 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBGuardarPasajeroActionPerformed
 
     private void jBBuscarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorNombreActionPerformed
-        String nombre = jTBuscarNombre.getText().trim();
-        if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese un nombre para buscar.");
-            return;
-        }
+         String nombre = jTBuscarNombre.getText().trim();
+    if (nombre.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un nombre para buscar.");
+        return;
+    }
 
-        if (!nombre.matches("[a-zA-Z]+")) {
-            JOptionPane.showMessageDialog(this, "El nombre debe contener solo letras.");
-            return;
-        }
+    if (!nombre.matches("[a-zA-Z]+")) {
+        JOptionPane.showMessageDialog(this, "El nombre debe contener solo letras.");
+        return;
+    }
 
-        Pasajero pasajero = pasajeroData.buscarPasajeroPorNombre(nombre);
+    List<Pasajero> pasajeros = pasajeroData.buscarPasajerosPorNombre(nombre);
 
-        if (pasajero != null) {
-            modeloTabla.setRowCount(0);
+    if (!pasajeros.isEmpty()) {
+        modeloTabla.setRowCount(0);
+        for (Pasajero pasajero : pasajeros) {
             modeloTabla.addRow(new Object[]{
                 pasajero.getId_Pasajero(),
                 pasajero.getNombre(),
@@ -245,28 +260,30 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
                 pasajero.getTelefono(),
                 pasajero.isEstado() ? "Activo" : "Inactivo"
             });
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el nombre ingresado.");
         }
-        limpiarCamposBusqueda();
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el nombre ingresado.");
+    }
+    limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorNombreActionPerformed
 
     private void jBBuscarPorApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorApellidoActionPerformed
-        String apellido = jTBuscarApellido.getText().trim();
-        if (apellido.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese un apellido para buscar.");
-            return;
-        }
+String apellido = jTBuscarApellido.getText().trim();
+    if (apellido.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un apellido para buscar.");
+        return;
+    }
 
-        if (!apellido.matches("[a-zA-Z]+")) {
-            JOptionPane.showMessageDialog(this, "El apellido debe contener solo letras.");
-            return;
-        }
+    if (!apellido.matches("[a-zA-Z]+")) {
+        JOptionPane.showMessageDialog(this, "El apellido debe contener solo letras.");
+        return;
+    }
 
-        Pasajero pasajero = pasajeroData.buscarPasajeroPorApellido(apellido);
+    List<Pasajero> pasajeros = pasajeroData.buscarPasajerosPorApellido(apellido);
 
-        if (pasajero != null) {
-            modeloTabla.setRowCount(0);
+    if (!pasajeros.isEmpty()) {
+        modeloTabla.setRowCount(0);
+        for (Pasajero pasajero : pasajeros) {
             modeloTabla.addRow(new Object[]{
                 pasajero.getId_Pasajero(),
                 pasajero.getNombre(),
@@ -276,43 +293,54 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
                 pasajero.getTelefono(),
                 pasajero.isEstado() ? "Activo" : "Inactivo"
             });
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el apellido ingresado.");
         }
-        limpiarCamposBusqueda();
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el apellido ingresado.");
+    }
+    limpiarCamposBusqueda();
     }//GEN-LAST:event_jBBuscarPorApellidoActionPerformed
 
     private void jBBuscarPorDniActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarPorDniActionActionPerformed
-        String dni = jTDNI.getText().trim();
-        if (dni.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese un DNI para buscar.");
-            return;
-        }
+    String dni = jTDNI.getText().trim();
+    if (dni.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un DNI para buscar.");
+        return;
+    }
 
-        if (!dni.matches("\\d{1,10}")) {
-            JOptionPane.showMessageDialog(this, "El DNI debe contener solo números y tener máximo 10 dígitos.");
-            return;
-        }
+    if (!dni.matches("\\d{1,10}")) {
+        JOptionPane.showMessageDialog(this, "El DNI debe contener solo números y tener máximo 10 dígitos.");
+        return;
+    }
 
-        Pasajero pasajero = pasajeroData.buscarPasajeroPorDni(dni);
+    Pasajero pasajero = pasajeroData.buscarPasajeroPorDni(dni);
 
-        if (pasajero != null) {
-            modeloTabla.setRowCount(0);
-            modeloTabla.addRow(new Object[]{
-                pasajero.getId_Pasajero(),
-                pasajero.getNombre(),
-                pasajero.getApellido(),
-                pasajero.getDni(),
-                pasajero.getCorreo(),
-                pasajero.getTelefono(),
-                pasajero.isEstado() ? "Activo" : "Inactivo"
-            });
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el DNI ingresado.");
-        }
-        limpiarCamposBusqueda();
+    if (pasajero != null) {
+        modeloTabla.setRowCount(0);
+        modeloTabla.addRow(new Object[]{
+            pasajero.getId_Pasajero(),
+            pasajero.getNombre(),
+            pasajero.getApellido(),
+            pasajero.getDni(),
+            pasajero.getCorreo(),
+            pasajero.getTelefono(),
+            pasajero.isEstado() ? "Activo" : "Inactivo"
+        });
+        rellenarCamposPasajero(pasajero);
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el DNI ingresado.");
+    }
+    
     }//GEN-LAST:event_jBBuscarPorDniActionActionPerformed
 
+    private void rellenarCamposPasajero(Pasajero pasajero) {
+    jTNombre.setText(pasajero.getNombre());
+    jTApellido.setText(pasajero.getApellido());
+    jTDNI.setText(pasajero.getDni());
+    jTCorreo.setText(pasajero.getCorreo());
+    jTCelular.setText(pasajero.getTelefono());
+    jCheckEstado.setSelected(pasajero.isEstado());
+}
+    
     private void jBVisualizarTodosPasajerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVisualizarTodosPasajerosActionPerformed
         limpiarTabla();
         cargarPasajeros();
@@ -321,6 +349,67 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+String dni = jTDNI.getText().trim();
+    
+    if (dni.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Ingrese un DNI para buscar el pasajero a eliminar.");
+        return;
+    }
+
+    if (!dni.matches("\\d{1,10}")) {
+        JOptionPane.showMessageDialog(this, "El DNI debe contener solo números y tener máximo 10 dígitos.");
+        return;
+    }
+
+    Pasajero pasajero = pasajeroData.buscarPasajeroPorDni(dni);
+
+    if (pasajero != null) {
+        int idPasajero = pasajero.getId_Pasajero();
+        
+        int confirmacion = JOptionPane.showConfirmDialog(this, "¿Está seguro de que desea eliminar a este pasajero?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            pasajeroData.eliminarPasajero(idPasajero);
+            limpiarCampos();
+            modeloTabla.setRowCount(0);
+            jTDNI.setText("");
+        }
+    } else {
+        JOptionPane.showMessageDialog(this, "No se encontró ningún pasajero con el DNI ingresado.");
+    }
+
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+         // Obtener los datos actuales del pasajero desde los campos
+    String nombre = jTNombre.getText();
+    String apellido = jTApellido.getText();
+    String dni = jTDNI.getText();
+    String correo = jTCorreo.getText();
+    String telefono = jTCelular.getText();
+    boolean estado = jCheckEstado.isSelected();
+
+    // Validar que el DNI sea numérico y válido
+    if (!dni.matches("\\d{1,10}")) {
+        JOptionPane.showMessageDialog(this, "El DNI debe contener solo números y tener máximo 10 dígitos.");
+        return;
+    }
+
+    // Crear un objeto Pasajero con los datos actuales
+    Pasajero pasajero = new Pasajero(nombre, apellido, dni, correo, telefono, estado);
+
+    // Modificar el pasajero utilizando el método de PasajeroData
+    pasajeroData.modificarPasajero(pasajero);
+
+    // Limpiar los campos después de la modificación
+    limpiarCampos();
+    limpiarTabla();
+    cargarPasajeros();
+
+    JOptionPane.showMessageDialog(this, "Pasajero modificado exitosamente.");
+    }//GEN-LAST:event_jBModificarActionPerformed
 
         private void guardarPasajero() {
         String nombre = jTNombre.getText();
@@ -379,7 +468,7 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     private void limpiarCamposBusqueda() {
     jTBuscarNombre.setText("");
     jTBuscarApellido.setText("");
-    jTBuscarDni.setText("");
+    jTDNI.setText("");
 }
     
     private void limpiarTabla() {
@@ -424,6 +513,7 @@ public class Pasajeros_View extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBBuscarPorNombre;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardarPasajero;
+    private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBVisualizarTodosPasajeros;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckEstado;
